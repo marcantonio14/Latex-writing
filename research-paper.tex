@@ -123,7 +123,11 @@ Thanks to the LTE environment simulator MONSTeR, a framework built around the LT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Related Work}\label{sec:sota}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The Related Work section contains an analysis of the most relevant related literature (remarking the shortcomings that are addressed in your work)
+In this section we will overview the main proposals in the literature.\\
+First of all we must take in account the solution exposed in \cite{simsek2013enhanced} to protect the downlink micro transmissions. Alongside the concept of ABS period they introduced the so called Flexible User Association and Cell selection bias (CSB). As we already know, whenever a UE needs to select a suitable cell for association it chooses the one with the strongest signal and therefore the utilization of the micro mostly of time is neglected.\\
+LTE has introduced the bias value $\alpha_i$, that is broadcasted to all the UEs. Hence the UE will choose the right cell maximizing the sum between $\alpha_i$ and the received signal power $P_i$ over each i-th cell in the system; obviously higher bias values are assigned to the micros.\\
+The authors of \cite{deb2014algorithms} proposed two algorithms, one for the optimal ABS mask (OPT-ABS) and one for defining the right value for the CBS. The former is split into two parts: the first to search the number of optimal subframes in which the macros are mute and second how to define the optimal ABS pattern. This algorithm turned up to be a NP-hard computational, however they proofed that with a cleaver breakdown of the steps it's implementable and the complexity is scalar with number of cells. Instead the second algorithm compute the biases so that the "association error" (as compared to optimal association) is minimize and this technique shows some shortcomings as the fact is hardly applicable to a non-static scenario and so the beforehand knowledge of the locations is required in order to evaluated which is the cell in the area.\\
+Another noteworthy paper is surely \cite{deb2014algorithms} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{System Model}\label{sec:symo}
