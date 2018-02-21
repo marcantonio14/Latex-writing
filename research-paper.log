@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  21 FEB 2018 16:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  21 FEB 2018 17:22
 entering extended mode
 **./research-paper.tex
 (research-paper.tex
@@ -1636,12 +1636,25 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 97.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+<figures/ABS.png, id=4, 304.9794pt x 192.4791pt>
+File: figures/ABS.png Graphic file (type png)
+<use figures/ABS.png>
+Package pdftex.def Info: figures/ABS.png  used on input line 113. on input line
+ 113.
+Package pdftex.def Info: Requested size: 265.32993pt x 167.45544pt on input lin
+e 113.
+
+Overfull \hbox (9.70702pt too wide) in paragraph at lines 113--114
+[][] 
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [1{C:/Users/marco/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
-] (research-paper.bbl)
+] [2 <./figures/ABS.png>] (research-paper.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1653,26 +1666,28 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2] (research-paper.aux) ) 
+[3
+
+] (research-paper.aux) ) 
 Here is how much of TeX's memory you used:
- 36967 strings out of 493312
- 876978 string characters out of 3138900
- 1023248 words of memory out of 3000000
- 39950 multiletter control sequences out of 15000+200000
+ 36977 strings out of 493312
+ 877132 string characters out of 3138900
+ 1024248 words of memory out of 3000000
+ 39957 multiletter control sequences out of 15000+200000
  633798 words of font info for 121 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,8n,128p,10388b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.
-enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utm
-bi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on research-paper.pdf (2 pages, 101654 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.en
+c}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi
+8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on research-paper.pdf (3 pages, 142702 bytes).
 PDF statistics:
- 45 PDF objects out of 1000 (max. 8388607)
+ 51 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

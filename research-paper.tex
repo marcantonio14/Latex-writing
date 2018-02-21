@@ -108,15 +108,16 @@ The problem we're facing consists in discovering an optimal trade-off of the rad
 So the issue is that, accounting the above scenarios, the micro could be left underutilized and this would turn out to be a bad exploitation of the resources deployed appositely to enhance the connectivity in some areas, with a following decrease of the user performance in comparison with achievable potential capacity.\\
 Then with the purpose of promote fair resource sharing, we decided to address the problem trying to stop macros from all the transmissions (some exception signals, like beacons, are always active), for a certain amount of subframes in a frame: this approach is already adopted by LTE and is known as enhanced inter cell interference coordination (eICIC). The period in which macros are "silent" is called Almost Blank Subframe (ABS), period over which micros can transmit with reduced interference.\\
 Recalling that a frame is made of ten subframes, the ABS mask, that's the pattern of 0's and 1's where 1 indicates a macro inactive subframe, is found as the result of an optimization problem. The idea is to exploit a reinforcement learning approach, the so called Q-learning technique in order to reach the optimal trade-off of the resources and set the best ABS mask in a self-adaptive manner for each specific scenario.\\
-Thanks to the LTE environment simulator MONSTeR, a framework built around the LTE system toolbox available in Matlab, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.     
+Thanks to the LTE environment simulator MONSTeR, a framework built around the LTE system toolbox available in Matlab, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.
+\begin{figure}[h]
+\includegraphics[scale=0.87]{figures/ABS.png}
+\caption{Example of a typical HetNet with a macro and some micro used for throughput enhancement in high density utilization area; a micro is placed on the edge of the coverage area for improving the border throughput}
+\end{figure}     
 
 
-\textcolor{red}{\textbf{The introduction is structured as follows (REMEMBER TO ERASE THIS)
+\textcolor{red}{\textbf{TO DO (REMEMBER TO ERASE THIS)
 \begin{itemize}
-	\item What are we talking about: description of the addressed problem. DONE!
-\item Motivation: why the problem is important. DONE!
-\item Novelty: how you contribute to advance the state of the art DONE!
-\item \textbf{Results: summary of the main findings MISSING!}
+\item \textbf{Results: summary of the main findings}
 \end{itemize}}}  
 
 
@@ -126,7 +127,7 @@ Thanks to the LTE environment simulator MONSTeR, a framework built around the LT
 In this section we will overview the main proposals in the literature.\\
 First of all we must take in account the solution exposed in \cite{simsek2013enhanced} to protect the downlink micro transmissions. Alongside the concept of ABS period they introduced the so called Flexible User Association and Cell selection bias (CSB). As we already know, whenever a UE needs to select a suitable cell for association it chooses the one with the strongest signal and therefore the utilization of the micro mostly of time is neglected.\\
 LTE has introduced the bias value $\alpha_i$, that is broadcasted to all the UEs. Hence the UE will choose the right cell maximizing the sum between $\alpha_i$ and the received signal power $P_i$ over each i-th cell in the system; obviously higher bias values are assigned to the micros.\\
-The authors of \cite{deb2014algorithms} proposed two algorithms, one for the optimal ABS mask (OPT-ABS) and one for defining the right value for the CBS. The former is split into two parts: the first to search the number of optimal subframes in which the macros are mute and second how to define the optimal ABS pattern. This algorithm turned up to be a NP-hard computational, however they proofed that with a cleaver breakdown of the steps it's implementable and the complexity is scalar with number of cells. Instead the second algorithm compute the biases so that the "association error" (as compared to optimal association) is minimize and this technique shows some shortcomings as the fact is hardly applicable to a non-static scenario and so the beforehand knowledge of the locations is required in order to evaluated which is the cell in the area.\\
+The authors of \cite{deb2014algorithms} proposed two algorithms, one for the optimal ABS mask (OPT-ABS) and one for defining the right value for the CBS. The former is split into two parts: the first to search the number of optimal subframes in which the macros are mute and second how to define the optimal ABS pattern. This algorithm turned up to be a NP-hard computational, however they proofed that with a cleaver breakdown of the steps it's implementable and the complexity is scalar with number of cells. Instead the second algorithm compute the biases so that the "association error" (as compared to optimal association) is minimize and this technique shows some shortcomings as the fact is hardly applicable to a non-static scenario and so the beforehand knowledge of the locations is required in order to evaluated which is the best cell in the area.\\
 Another noteworthy paper is surely \cite{deb2014algorithms} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
