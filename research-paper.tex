@@ -79,21 +79,22 @@
 \maketitle
 
 \begin{abstract}
-This is a template for a scientific research paper. The abstract is a super brief summary of what you do in the paper.
+In this paper we explain a possible machine-learning approach for the enhanced inter-cell interference coordination (eICIC) in a heterogeneous network (HetNet), where macro and micro cells optimize their downlink transmission in a self-adaptive manner. The idea is to exploit the Q-learning algorithm to guarantee the fair resource sharing between micro and macro cells and so to make the system works in the best performance possible. Indeed this specific reinforcement learning is used to find the optimal policy that leads to the right ABS pattern setting designed specifically for each scenario evaluating only a few parameters and changing dynamically that pattern in order to cope the possible alterations on the environment.\\
+
+\textit{Index  Terms}---SON, Self Optimizing Networks, LTE, eICIC, reinforcement learning, Q-learning, MONSTeR     
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 The great spreading of mobile devices all over the world represents the fastest adoption of any technology that
 our society has ever experienced, faster than the Internet and the earlier generations of mobile
 communications. Now tablets, android devices, iPhones, application stores, social media and the data
-exchanges between end-users and clouds are all growing at exponential speed. Providing the necessary bandwidth and capacity to the people so they can keep the pace of this growth is a fascinating challenge, then in order to achieve that, a more network densification is requested together a full exploitation of the simultaneous presence of micro (coverage radius around 10m-300m) and macro (coverage radius up to 20km) cells, the so called heterogeneous networks (HetNet).\\
+exchanges between end-users and clouds are all growing at exponential speed. Providing the necessary bandwidth and capacity to the people so they can keep the pace of this growth is a fascinating challenge; then in order to achieve that, a more network densification is required together a full exploitation of the simultaneous presence of micro (coverage radius around 10m-300m) and macro (coverage radius up to 20km) cells, the so called heterogeneous networks (HetNet).\\
 The only way these challenges can be cost-effective, efficient and human-handleable is through the use of more automated and autonomous systems, such as Self-Organizing Networks (SON): the goal is to minimize the human intervention in the planning, deployment, optimization and maintenance activities of these new networks.\\
 A such SON conceptually must own, as explained by \cite{ramiro2011self}, the following capabilities:
 \begin{itemize}
-\item Self-Planning: process of identifying the parameter settings of new network elements, including site locations and hardware configuration (like radio parameters of a new eNodeB or a table of neighbor nodes);
+\item Self-Planning: process of identifying the parameter settings of new network elements (like radio parameters of a new eNodeB or a table of neighbor nodes);
 \item Self-Deployment: preparation, installation, authentication and delivery of a status report of
 a new network node in order to get a "plug and play" approach for each new device;
 \item Self-Healing: execution of the routine actions that keep the network operational and/or
@@ -104,18 +105,20 @@ settings.
 \end{itemize}
 Our work is focused on the last point of the list, more precisely on the improvement of the signal quality and consequently the throughput in a LTE system, trying to minimize the interference between micro and macro cell with an adaptive coordination in downlink transmissions of the antennas (mainly controlling the transmit power patterns).\\
 The problem we're facing consists in discovering an optimal trade-off of the radio resources to be assigned between high-power nodes (macro) and low-power nodes (micro). The latter has an higher capacity and consequently an user connected to it will benefit of a better performance, however due to fact that it shares the same frequency band with the macros, low-power nodes are severely affected by the interference from the high-power nodes. In other words, downlink micro transmissions to its UEs could be sorely degraded by high power macro transmission; besides UEs that are close to a micro could end up associating to a macro due to the higher power strength received from the stronger node.\\
-So the issue is that, accounting the above scenarios, the micro could be left underutilized and this would turn out to be a bad exploitation of the resources deployed appositely to enhance the connectivity in some areas alongside an important decrease of the user performance in comparison with achievable potential capacity.\\
-Then with the purpose of promote fair sharing of the resources, we decided to address the problem trying to stopmacros from the transmission almost completely (some signals, like beacons, are always active), for a certain amount of subframes in a frame: this approach is already adopted by LTE and is known as enhanced inter cell interference (eICIC),  
+So the issue is that, accounting the above scenarios, the micro could be left underutilized and this would turn out to be a bad exploitation of the resources deployed appositely to enhance the connectivity in some areas, with a following decrease of the user performance in comparison with achievable potential capacity.\\
+Then with the purpose of promote fair resource sharing, we decided to address the problem trying to stop macros from all the transmissions (some exception signals, like beacons, are always active), for a certain amount of subframes in a frame: this approach is already adopted by LTE and is known as enhanced inter cell interference coordination (eICIC). The period in which macros are "silent" is called Almost Blank Subframe (ABS), period over which micros can transmit with reduced interference.\\
+Recalling that a frame is made of ten subframes, the ABS mask, that's the pattern of 0's and 1's where 1 indicates a macro inactive subframe, is found as the result of an optimization problem. The idea is to exploit a reinforcement learning approach, the so called Q-learning technique in order to reach the optimal trade-off of the resources and set the best ABS mask in a self-adaptive manner for each specific scenario.\\
+Thanks to the LTE environment simulator MONSTeR, a framework built around the LTE system toolbox available in Matlab, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.     
 
 
-  
-\textbf{The introduction is structured as follows
+\textcolor{red}{\textbf{The introduction is structured as follows (REMEMBER TO ERASE THIS)
 \begin{itemize}
-	\item What are we talking about: description of the addressed problem. 
-\item Motivation: why the problem is important.
-\item Novelty: how you contribute to advance the state of the art
-\item Results: summary of the main findings 
-\end{itemize}}
+	\item What are we talking about: description of the addressed problem. DONE!
+\item Motivation: why the problem is important. DONE!
+\item Novelty: how you contribute to advance the state of the art DONE!
+\item \textbf{Results: summary of the main findings MISSING!}
+\end{itemize}}}  
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Related Work}\label{sec:sota}
