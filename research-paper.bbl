@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{deb2014algorithms}
+Supratim Deb, Pantelis Monogioudis, Jerzy Miernik, and James~P Seymour.
+\newblock Algorithms for enhanced inter-cell interference coordination (eicic)
+  in lte hetnets.
+\newblock {\em IEEE/ACM transactions on networking}, 22(1):137--150, 2014.
+
+\bibitem{lopez2011enhanced}
+David Lopez-Perez, Ismail Guvenc, Guillaume De~la Roche, Marios Kountouris,
+  Tony~QS Quek, and Jie Zhang.
+\newblock Enhanced intercell interference coordination challenges in
+  heterogeneous networks.
+\newblock {\em IEEE Wireless Communications}, 18(3), 2011.
+
+\bibitem{ramiro2011self}
+Juan Ramiro and Khalid Hamied.
+\newblock {\em Self-organizing networks (SON): Self-planning, self-optimization
+  and self-healing for GSM, UMTS and LTE}.
+\newblock John Wiley \& Sons, 2011.
+
+\bibitem{simsek2013enhanced}
+Meryem Simsek, Mehdi Bennis, and Ismail Guvenc.
+\newblock Enhanced intercell interference coordination in hetnets: Single vs.
+  multiflow approach.
+\newblock In {\em Globecom Workshops (GC Wkshps), 2013 IEEE}, pages 725--729.
+  IEEE, 2013.
+
+\bibitem{sutton1998reinforcement}
+Richard~S Sutton and Andrew~G Barto.
+\newblock {\em Reinforcement learning: An introduction}, volume~1.
+\newblock MIT press Cambridge, 1998.
+
+\end{thebibliography}
