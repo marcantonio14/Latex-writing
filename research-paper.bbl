@@ -6,6 +6,13 @@ Supratim Deb, Pantelis Monogioudis, Jerzy Miernik, and James~P Seymour.
   in lte hetnets.
 \newblock {\em IEEE/ACM transactions on networking}, 22(1):137--150, 2014.
 
+\bibitem{etsi2017136}
+TS~ETSI.
+\newblock 136 211.
+\newblock {\em Evolved Universal Terrestrial Radio Access Network (E-UTRAN); X2
+  general aspects and principles (3GPP TS 36.420 version 14.0.1 Release 14)},
+  2017.
+
 \bibitem{lopez2011enhanced}
 David Lopez-Perez, Ismail Guvenc, Guillaume De~la Roche, Marios Kountouris,
   Tony~QS Quek, and Jie Zhang.
