@@ -133,21 +133,34 @@ Another noteworthy paper is surely \cite{simsek2013enhanced}, here the authors t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{System Model}\label{sec:symo}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In this section we will explain all the operative assumptions that we took in account for our proposal and the steps followed in our work. \\
-Quoting from \cite{sutton1998reinforcement}, the main book about RL: \textit{"the reinforcement learning problem is meant to be a straightforward framing of the problem of learning from interaction to achieve a goal".} The learner, who is the one that makes the decisions is called the agent and in this scenario will be the macro. The thing it interacts with, comprising everything outside the agent, is called the environment, part played here by the simulator MONSTeR. These interact continually, the agent selecting actions and the environment responding to those actions and presenting new situations to the agent. The environment also yields rewards, numerical values that evaluate the goodness of the last action taken and that the agent tries to maximize over time. At each time step $t$, the agent receives a representation of the environment’s state $S_t$, here defined by three parameters:
+In this section we will explain all the operative assumptions that we took in account for our proposal and the steps followed in our work.
+\subsection{Modelization of the problem}
+Quoting from \cite{sutton1998reinforcement}, the main book about RL: 
+\begin{quote}
+the reinforcement learning problem is meant to be a straightforward framing of the problem of learning from interaction to achieve a goal.
+\end{quote}
+The learner, who is the one that makes the decisions is called the agent and in this scenario will be the macro. The thing it interacts with, comprising everything outside the agent, is called the environment, part played here by the simulator MONSTeR. These interact continually, the agent selecting actions and the environment responding to those actions and presenting new situations to the agent. The environment also yields rewards, numerical values that evaluate the goodness of the last action taken and that the agent tries to maximize over time. At each time step $t$, the agent receives a representation of the environment’s state $S_t$, here defined by three parameters:
 \begin{itemize}
 \item the ratio between the number of users in the macro and in the micro, quantized in four values which indicates if there're much more users in the macro, a little bit more in the macro, a little bit more in the micro or much more in the micro;
 \item the ratio between the throughput of macros and micros, also here quantized but in five values;
 \item the number of ABS quantized in six values where each of them stays for the amount of 1's, always a multiple of 2, and those 1's are distributed in a certain pattern in the mask;    
 \end{itemize}
-so we assume that the all the possible states in our environment is exactly $4*5*6=120$. Depending on which state the agent is, it selects an action $A_t$ from the set of all actions $A=\lbrace-2,0,2\rbrace$ that will the change the ABS mask, remarking it is the number of 1's.  The function reward selected for our system is 
+so we assume that the all the possible states in our environment is exactly $4\cdot 5\cdot 6=120$. Depending on which state the agent is, it selects an action $A_t$ from the set of all actions $A=\lbrace-2,0,2\rbrace$ that will the change the ABS mask, remarking it is the number of 1's.  The function reward selected for our system is 
 \begin{equation*}
--\bigg( \frac{n^{micro}*S^{macro}}{n^{macro}*S^{micro}-1} \bigg) ^2
-\end{equation*}
-that shows the discrepancy between the actual condition and the equilibrium we aim to. \\
+r(n^{m},n^{M},S^{m},S^{M})=-\bigg( \frac{n^{m}\cdot S^{M}}{n^{M} \cdot S^{m}}-1 \bigg) ^2
+\end{equation*} 
+where m stands for micro and M for macros and it shows the discrepancy between the actual condition and the equilibrium we aim to. \\
 At each time step, the agent maps from states to probabilities of taking each possible action. This mapping is called policy and is denoted as $\pi_t$. Reinforcement
 learning specifies how the agent changes its policy in relation of its experience. The agent’s goal so is to maximize the total amount of reward it gains on the long term.
-
+\subsection{Q-learning technique}
+Q-learning algorithm was proposed by Watkins and consists in maintaining a table of estimated expected long-run reward, called indeed Q-values and written as Q(S,A), for each state-action couple. This technique is classified between the off-policy methods, in other words it evaluates or improves a policy different from that used to generate the data. So the idea to exploit two policies, one that is learned about and that becomes the optimal policy (target policy), and an exploratory one used to estimate the Q-values (exploration policy). Despite that the most used policies to implement the latter are the $\epsilon$-greedy or the softmax, we decided to use a random selection policy. \\
+The Q-learning function used points out how to update the Q-value at each step and it's described as follows:
+\begin{equation*}
+Q(S_{t+1},A_{t+1})=Q(S_{t},A_{t})+\alpha[R(S_{t},A_{t})-Q(S_{t},A_{t})]
+\end{equation*}
+where R is the maximized expected reward and $\alpha$ indicates with which rates with we take actions towards the best Q-values.
+\subsection{Simulation settings}
+  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}\label{sec:res}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
