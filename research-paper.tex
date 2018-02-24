@@ -158,6 +158,13 @@ Q(S_{t+1},A_{t+1})=Q(S_{t},A_{t})+\alpha[R(S_{t},A_{t})-Q(S_{t},A_{t})]
 \end{equation*}
 where $ R  $ is the maximized expected reward and $\alpha$ indicates with which rates we take actions towards the best Q-values achievable.
 \subsection{Simulation settings}
+\textcolor{red}{In the present work in order to evaluate the proposed algorithm we run out an extensive Matlab simulation using MONSTeR. We generated an urban scenario of 900 squared meters with 7 horizontal and 6 vertical streets, between streets there are buildings with height uniformly distribuited from 20 to 50 meters. We placed 1 macro eNodeB at the center of the city and 3 micros equally distribuited with distance from the macro \textbf{40 m}, where the former has height 35 m and 50 Resource Blocks (RB) and the latter have height 25 m and 25 RBs. The mobility of the users is generated randomly, 15 users move with velocity \textbf{70 m/s} along sidewalks and at each cross have equally distribuited probability to turn left/right or go straight ahead.\\
+To simulate the channel and the wireless communication we considered the Winner II channel model with \textbf{dense urban} propagation scenario implemented inside Matlab Communications System Toolbox.
+To asses the worth of our algorithm we considered to main metrics the BER and the average throughput of the users involved.
+}
+\subsection{Training Phase}
+\textcolor{red}{The learning algorithm was trained over \textbf{N} different simulations composesed of 125 frames for a total time simulation of \textbf{N*125} with }
+\subsection{Test Phase}
 In the simulations that have been put in place, the number of users was from 10 up to 25 randomly distributed between the cells (3 micros and a macro) and they move casually through a simulated urban scenario\footnote{Physical model adopted eHATA: Extended Okumura Hata model for path loss and MATLAB lteFading for fading.}  with a constant speed equals to 1 m/s. The packet generation from an user is modelled as a Possion process of rate $\lambda$ which is taken from a Gaussian distribution $\lambda \sim \mathcal{N}(10,5)$. So whenever a generation event occurs a packet file is created to be sent to the eNodeB with a certain probability inversely proportional to the size $\lbrace$\textcolor{red}{\textbf{to be defined}} $\rbrace$bit, i.e. the smallest packet will benefit of an higher likelihood due to the fact that we're simulating a realistic human behavior during a web surfing period.\\
 \\
 \begin{figure}[h]
