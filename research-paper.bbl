@@ -1,8 +1,12 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{monster}
 Monster: a framework built around the matlab lte system toolbox.
 \newblock \url{https://github.com/Sonohi/monster}, 2017.
+
+\bibitem{bultitude20074}
+Yvo de~Jong Bultitude and Terhi Rautiainen.
+\newblock Ist-4-027756 winner ii d1. 1.2 v1. 2 winner ii channel models.
 
 \bibitem{deb2014algorithms}
 Supratim Deb, Pantelis Monogioudis, Jerzy Miernik, and James~P Seymour.

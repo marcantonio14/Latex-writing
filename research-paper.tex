@@ -117,7 +117,7 @@ Accounting the above scenario, the micro could be left underutilized and this wo
 Addressing a fair resource sharing, a solution could be stop macros from all the transmissions (some exception signals, like beacons, are always active), for a certain amount of time: this approach is adopted by LTE 3GPP standard and it is known as enhanced Inter Cell Interference Coordination (eICIC). The period in which macros are "silent" is called Almost Blank Subframe (ABS), period over which micros can transmit with reduced interference.\\
 Time is slotted in frames of 10 ms and each one of these is split into 10 subframes, so a macro decides to mute itself in a certain subframe following the ABS mask, that's the pattern of 0's and 1's where 1 indicates the macro's inactivity.\\
 The goal is to discover an adaptive ABS mask that maximizes the UEs' performance and it is found as the result of an optimization problem. Our idea is to use a reinforcement learning (RL) approach, the so called Q-learning technique in order to reach the fairness between the shared resources and to set the best ABS mask in a self-tuning manner for each specific scenario.\\
-Thanks to the LTE environment simulator MONSTeR (MObile Networks SimulaToR) \cite{monster}, a framework built around the LTE system toolbox available in Matlab, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.
+Thanks to the LTE environment simulator MONSTeR (MObile Networks SimulaToR) \cite{monster}, a framework built around the LTE system toolbox available in MATLAB, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.
 \begin{figure}[h]
 \includegraphics[scale=0.80]{figures/ABS.png}
 \caption{Example of a typical HetNet with a macro and some micros used for throughput enhancement in high density utilization area; a micro is placed on the edge of the coverage area for improving the border throughput}
@@ -168,8 +168,8 @@ Q(S_{t+1},A_{t+1})=Q(S_{t},A_{t})+\alpha[R(S_{t},A_{t})-Q(S_{t},A_{t})]
 \end{equation*}
 where $ R  $ is the maximized expected reward and $\alpha$, indicates with which rates we take actions towards the best Q-values achievable.
 \section{Simulation Settings}
-In the present work in order to evaluate the proposed algorithm we run out an extensive Matlab simulation using MONSTeR. We generated an urban scenario of 9000 squared meters with 7 horizontal and 6 vertical streets and among them we located buildings with height uniformly distributed from 20 to 50 meters. Then only a macro eNodeB is placed at the center of the city and 3 micros are equally distributed with distance from the macro of \textbf{40 m}; the former has height 35 m and 50 Resource Blocks (RB) and the latter have height 25 m and 25 RBs. The mobility of the users is generated randomly, 15 users move with velocity \textbf{70 m/s} along sidewalks and at each cross have the same probability to turn left/right or to go straight ahead.\\
-To simulate the channel and the wireless communication we considered the Winner II channel model with \textbf{dense urban} propagation scenario implemented inside Matlab Communications System Toolbox.
+In the present work in order to evaluate the proposed algorithm we run out an extensive MATLAB simulation using MONSTeR. We generated an urban scenario of 4000 squared meters with 4 horizontal and 3 vertical streets and among them we located buildings with height uniformly distributed from 20 to 50 meters. Then only macro eNodeB is placed at the center of the city and 4 micros are equally distributed on a circumference centered in the macro with radius of 40 m; the former has height 35 m and 50 Resource Blocks (RB) and the latter have height 25 m and 25 RBs. The mobility of the users is generated randomly, 15 users move with velocity 70 m/s along sidewalks and at each cross have the same probability to turn left/right or to go straight ahead.\\
+To simulate the channel and the wireless communication we considered the Winner II channel model \cite{bultitude20074} with urban propagation scenario implemented inside MATLAB Communications System Toolbox.
 To assess the worth of our algorithm we considered as main metrics the Bit Error Rate (BER) and the average throughput of involved users, therefore we compared the proposed optimization with other 2 ABS choice policy in 3 different traffic scenarios:
 \begin{itemize}
 	\item \textbf{Static ABS}: the number of Almost Blank Subframes remains constant to 4 over the entire simulation and  cells use the same ABS mask 
@@ -200,7 +200,7 @@ Table \ref{table:a} sums up the ABS policy parameters.
 	\end{table}
 \end{footnotesize}
 \egroup
-\noindent The packet generation event from an user is modelled as a Poisson process of rate $\lambda$ which is taken from a Gaussian distribution \textbf{$\lambda \sim \mathcal{N}(10,5)$}. So whenever a generation event occurs a packet file is created to be sent to the eNodeB with a certain probability inversely proportional to the size $\lbrace$\textcolor{red}{\textbf{to be defined}} $\rbrace$bit, i.e. the smallest packet will benefit of an higher likelihood due to the fact that we're simulating a realistic human behavior during a web surfing period.\\
+\noindent The packet request event from an user is modelled as a Poisson process of rate $\lambda$, which is taken from a Gaussian distribution $\lambda \sim \mathcal{N}(75, 10)$. So whenever a generation event occurs a packet file is created with a random dimension. Specifically the packet size could be $\lbrace 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000\rbrace$ with a probability inversely proportional to the size itself, i.e. the smallest packet will benefit of an higher likelihood due to the fact that we're simulating a realistic human behavior during a web surfing period.\\
 
 \subsection{Training Phase}
 The learning algorithm was trained over 74 different simulations composed of 125 frames of 10 ms for a total of 9250 frames and simulated time 9.25 seconds.
@@ -208,9 +208,9 @@ Using the off-policy property of the Q-learning algorithm, we ensured that all p
 \subsection{Test Phase}
 
 \begin{figure}[h]
-\includegraphics[scale=0.68]{figures/traj.png}
+\includegraphics[scale=0.54]{figures/traj.png}
 \label{img:map}
-\caption{Example of UEs in the urban simulated environment and highlighted trajectories; red dots represent the micros and the green the macro.} 
+\caption{Example of UEs in the urban simulated environment and highlighted trajectories; greeen dots represent the micros and the antenna the macro.} 
 \end{figure}
 \textbf{to be improved} After all these necessary premises, the first step is to run a big amount of simulations with the purpose of explore all the couples state-action, the Q-values, following the random policy and then the Q-learning will be applied to find out which will be the optimal policy to take. So at this point a several number of simulations with the standard ABS policy and with optimal one will be run to compare the results in terms of throughput (and delay?).         
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
