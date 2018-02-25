@@ -13,6 +13,7 @@
 \usepackage{etoolbox}
 \usepackage{adjustbox}
 \usepackage{multirow}
+\usepackage{breqn}
 
 % Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
 % thus preventing page breaks from occurring within multiline equations. Use:
@@ -85,7 +86,7 @@
 \thispagestyle{plain}
 \pagestyle{plain}
 \begin{abstract}
-In this paper we propose a possible machine-learning approach for the enhanced inter-cell interference coordination (eICIC) in a heterogeneous network (HetNet), where macro and micro cells optimize their downlink transmission in a self-adaptive manner. The idea is to exploit the Q-learning algorithm to guarantee a fair resource sharing between micro and macro cells and so to make the system works in the best performance possible. Indeed this specific reinforcement learning technique is used to find out the optimal policy that leads to the right ABS pattern setting, designed specifically for each scenario. Hence evaluating only a few parameters and changing dynamically the ABS pattern we aim to cope the possible alterations on a realistic environment.\\
+In this paper we introduce a possible machine-learning approach for the enhanced inter-cell interference coordination (eICIC) in a heterogeneous network (HetNet), where macro and micro cells optimize their downlink transmission in a self-adaptive manner. The idea is to exploit the Q-learning algorithm to guarantee a fair resource sharing between micro and macro cells and so to make the system works in the best performance possible. Indeed this specific reinforcement learning technique is used to find out the optimal policy that leads to the right ABS pattern setting, designed specifically for each scenario. Hence evaluating only a few parameters and changing dynamically the ABS pattern we aim to cope the possible alterations on a realistic environment.\\
 
 \textit{Index  Terms}---SON, Self Optimizing Networks, LTE, eICIC, ABS, reinforcement learning, Q-learning, MONSTeR     
 \end{abstract}
@@ -96,10 +97,10 @@ In this paper we propose a possible machine-learning approach for the enhanced i
 The great spreading of mobile devices all over the world represents the fastest adoption of any technology that
 our society has ever experienced, faster than the Internet and the earlier generations of mobile
 communications. Now tablets, android devices, iPhones, application stores, social media and the data
-exchanges between end-users and clouds are all growing at exponential speed. Providing the necessary bandwidth and capacity to the people so they can keep the pace of this growth is a fascinating challenge; then in order to achieve that, a more network densification is required together a full exploitation of the simultaneous presence of micro (coverage radius around 10m-300m) and macro (coverage radius up to 20km) cells, the so called heterogeneous networks (HetNet).\\
+exchanges between end-users and clouds are all growing at exponential speed. Providing the necessary bandwidth and capacity to the people so they can keep the pace of this growth is a fascinating challenge; in order to achieve that, an increased network densification is required together to a full exploitation of the simultaneous presence of micro (coverage radius around 10m-300m) and macro (coverage radius up to 20km) cells, the so called heterogeneous networks (HetNet).\\
 In 2016, global mobile data traffic amounted to 7 exabytes (EB)\footnote{1 EB = $8\cdot 10^{18}$ bit} per month; in 2021, mobile data traffic worldwide is expected to reach 49 exabytes per month at a compound annual growth rate of 47 percent \cite{indexglobal}.
-The only way these challenges can be cost-effective, efficient and human-handleable is through the use of more automated and autonomous systems, such as Self-Organizing Networks (SON): the goal is to minimize the human intervention in the planning, deployment, optimization and maintenance activities of these new networks.\\
-A such SON conceptually must own, as explained by \cite{ramiro2011self}, the following capabilities:
+These challenges can be solved in a cost-effective, efficient and human-handleable way only through the use of more automated and autonomous systems, such as Self-Organizing Networks (SON): the goal is to minimize the human intervention in the planning, deployment, optimization and maintenance activities of these new networks.\\
+Such a SON conceptually must own, as explained by \cite{ramiro2011self}, the following capabilities:
 \begin{itemize}
 \item Self-Planning: process of identifying the parameter settings of new network elements (like radio parameters of a new eNodeB or a table of neighbor nodes);
 \item Self-Deployment: preparation, installation, authentication and delivery of a status report of
@@ -110,12 +111,12 @@ prevent problems (this includes the necessary software and hardware upgrades);
 collected by the User Equipments (UEs) and the base stations in order to auto-tune the network
 settings.
 \end{itemize}
-Our work is focused on the last point of the list, more precisely on the improvement of the signal quality and consequently the throughput in a LTE system, trying to minimize the interference between micro and macro cell with an adaptive coordination in downlink transmissions of the antennas (mainly controlling the transmit power patterns).\\
-The problem we're facing consists in discovering an optimal trade-off of the radio resources to be assigned between high-power nodes (macro) and low-power nodes (micro). The latter has an higher capacity and consequently an user connected to it will benefit of a better performance, however due to fact that it shares the same frequency band with the macros, low-power nodes are severely affected by the interference from the high-power nodes. In other words, downlink micro transmissions to its UEs could be sorely degraded by high power macro transmission; besides UEs that are close to a micro could end up associating to a macro due to the higher power strength received from the stronger node.\\
-So the issue is that, accounting the above scenarios, the micro could be left underutilized and this would turn out to be a bad exploitation of the resources deployed appositely to enhance the connectivity in some areas, with a following shortage of the user performance in comparison with achievable potential capacity.\\
-Addressing a fair resource sharing, a solution could be stop macros from all the transmissions (some exception signals, like beacons, are always active), for a certain amount of time: this approach is adopted by LTE 3GPP standard and is known as enhanced Inter Cell Interference Coordination (eICIC). The period in which macros are "silent" is called Almost Blank Subframe (ABS), period over which micros can transmit with reduced interference.\\
+Our work is focused on the last point of the list, more precisely on the improvement of the signal quality and consequently the throughput in a LTE system, trying to minimize the interference between micro and macro cells with an adaptive coordination in downlink transmissions of the antennas (mainly controlling the transmit power patterns).\\
+The problem we are facing consists in finding the optimal trade-off between assigning  the radio resources to high-power nodes (macro) or low-power nodes (micro). The latter has an higher capacity and consequently an user connected to it will have better performances; however, low-power nodes are severely affected by the interference from the high-power nodes, due to fact that they share the same frequency band with the macro. In other words, downlink micro transmissions to its UEs could be sorely degraded by high power macro transmission; besides UEs that are close to a micro could end up associating to a macro due to the higher power strength received from the stronger node.\\
+Accounting the above scenario, the micro could be left underutilized and this would turn out to be a bad exploitation of the resources deployed appositely to enhance the connectivity in some areas, with a following shortage of the user performance in comparison with achievable potential capacity.\\
+Addressing a fair resource sharing, a solution could be stop macros from all the transmissions (some exception signals, like beacons, are always active), for a certain amount of time: this approach is adopted by LTE 3GPP standard and it is known as enhanced Inter Cell Interference Coordination (eICIC). The period in which macros are "silent" is called Almost Blank Subframe (ABS), period over which micros can transmit with reduced interference.\\
 Time is slotted in frames of 10 ms and each one of these is split into 10 subframes, so a macro decides to mute itself in a certain subframe following the ABS mask, that's the pattern of 0's and 1's where 1 indicates the macro's inactivity.\\
-The goal is to discover an adaptive ABS mask that maximizes the UEs' performance and it's found as the result of an optimization problem. Our idea is to exploit a reinforcement learning (RL) approach, the so called Q-learning technique in order to reach the fairness between the shared resources and to set the best ABS mask in a self-tuning manner for each specific scenario.\\
+The goal is to discover an adaptive ABS mask that maximizes the UEs' performance and it is found as the result of an optimization problem. Our idea is to use a reinforcement learning (RL) approach, the so called Q-learning technique in order to reach the fairness between the shared resources and to set the best ABS mask in a self-tuning manner for each specific scenario.\\
 Thanks to the LTE environment simulator MONSTeR (MObile Networks SimulaToR) \cite{monster}, a framework built around the LTE system toolbox available in Matlab, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.
 \begin{figure}[h]
 \includegraphics[scale=0.80]{figures/ABS.png}
@@ -140,18 +141,22 @@ Another noteworthy paper is surely \cite{simsek2013enhanced}, here the authors t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{System Model}\label{sec:symo}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In this section we will explain all the operative assumptions, with the theoretical motivations, that we took in account for our proposal.
+In this section we will explain all the operative assumptions, with the theoretical motivations, that we took into account for our proposal.
 \subsection{Problem modelization}
 As stated in \cite{sutton1998reinforcement}, the main book about RL: the reinforcement learning problem is meant to be a straightforward framing of the problem of learning from interaction to achieve a goal. The learner, who is the one that makes the decisions is called the agent and in this scenario will be the macro. The thing it interacts with, comprising everything outside the agent, is called the environment, part played here by the simulator MONSTeR. These interact continually, the agent selecting actions and the environment responding to those actions and presenting new situations to the agent. The environment also yields rewards, numerical values that evaluate the goodness of the last action taken and that the agent tries to maximize over time. At each time step $t$, the agent receives a representation of the environment's state $S_t$, here defined by three parameters:
 \begin{itemize}
-\item the ratio between the number of users in the macro and in the micro, quantized in four values which indicates if there're much more users in the macro, a little bit more in the macro, a little bit more in the micro or much more in the micro;
-\item the ratio between the throughput of macro and mean value of all micros, also here quantized but in five values;
-\item the number of ABS is quantized in six values where each of them stays for the amount of 1's, always a multiple of 2, and those 1's are distributed in a certain pattern in the mask;    
+\item the ratio between the number of users in the macro and in the micro, quantized in four values which indicates if there are many more users in the macro, a little bit more in the macro, a little bit more in the micro or many more in the micro;
+\item the ratio between the throughput of the macro cell and the mean value of the throughtput of all micro cells, quantized in five values;
+\item the number of ABS is quantized in six values where each of them stays for the amount of subframes in which the macro cell stays silent. In particular we just consider ABS masks composed by an even number of silent subframes, that are actually six.
 \end{itemize}
-so we assume that the total number of possible states in our environment is exactly $4\cdot 5\cdot 6=120$. Depending on which state the agent is, it selects an action $A_t$ from the set of all actions $A=\lbrace-2,0,2\rbrace$ that will modify the ABS mask by this amount. The reward function selected for our system is \textcolor{red}{\textbf{MARA, WRITE THE CORRECT ONE!!}}
+We assume that the total number of possible states in our environment is exactly $4\cdot 5\cdot 6=120$. Depending in which state the agent is, it selects an action $A_t$ from the set of all actions $A=\lbrace-2,0,2\rbrace$ that will modify the ABS mask by this amount. In the states where the ABS mask is equal to 0 there is not the decreasing-action (-2) and in the states with ABS mask equal to 10 there is not the increasing action (+2). The reward is a number between 0 and 10 and it must be an high value when the ratio between the thoughput per user in the macro cell and the throughput per user in the microcells is close to one. In fact this condition is index of fairness between the downlink trasmissions for users in the macro cell and users in the micro cells. In particular the ratio we consider is: 
 \begin{equation*}
-r(n^{m},n^{M},S^{m},S^{M})=-\bigg( \frac{n^{m}\cdot S^{M}}{n^{M} \cdot S^{m}}-1 \bigg) ^2
-\end{equation*} 
+r(n^{m},n^{M},S^{m},S^{M})=\bigg(\frac{ S^{M} / n^{M} }{S^{m} / n^{m}} \bigg)= \bigg(\frac{ S^{M} \cdot n^{m}}{S^{m} \cdot n^{M}} \bigg)
+\end{equation*}
+And so, the reward function we consider is:
+\begin{dmath*}
+Reward(n^{m},n^{M},S^{m},S^{M}) = \begin{cases} 10 \cdot r(n^{m},n^{M},S^{m},S^{M}), & \mbox{if } r<1 \\ max( 10 \cdot(2 - r(n^{m},n^{M},S^{m},S^{M}),0), & \mbox{if } r>1 \end{cases}
+\end{dmath*} 
 where $m$ stands for micro and $M$ for macros and it shows the discrepancy between the actual system condition and the equilibrium we're aiming to. \\
 At each time step, the agent maps from states to probabilities of taking each possible action. This mapping is called policy and is denoted as $\pi_t$. Reinforcement
 learning specifies how the agent changes its policy in relation of its experience. The agent’s goal so is to maximize the total amount of reward it gains on the long term.
