@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  26 FEB 2018 00:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  26 FEB 2018 00:13
 entering extended mode
 **./research-paper.tex
 (research-paper.tex
@@ -1728,7 +1728,21 @@ Package pdftex.def Info: figures/traj.png  used on input line 212. on input lin
 e 212.
 Package pdftex.def Info: Requested size: 255.83199pt x 195.6681pt on input line
  212.
- (research-paper.bbl)
+
+
+! Package xcolor Error: Undefined color `addressing long term throughput'.
+
+See the xcolor package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.219 ...xtcolor{addressing long term throughput}}
+                                                  The Results section contai...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+(research-paper.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1742,10 +1756,10 @@ Before submitting the final camera ready copy, remember to:
 
 [4 <./figures/traj.png>] (research-paper.aux) ) 
 Here is how much of TeX's memory you used:
- 38153 strings out of 493312
- 894488 string characters out of 3138900
+ 38154 strings out of 493312
+ 894526 string characters out of 3138900
  1082571 words of memory out of 3000000
- 41074 multiletter control sequences out of 15000+200000
+ 41075 multiletter control sequences out of 15000+200000
  647050 words of font info for 139 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,10n,128p,10367b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1765,7 +1779,7 @@ Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/u
 tmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on research-paper.pdf (4 pages, 261696 bytes).
+Output written on research-paper.pdf (4 pages, 261701 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
