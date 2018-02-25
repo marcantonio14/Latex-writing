@@ -9,6 +9,11 @@
 \usepackage{epstopdf}
 \usepackage[pdftex]{graphicx}
 \usepackage[cmex10]{amsmath}
+\usepackage[flushleft]{threeparttable}
+\usepackage{etoolbox}
+\usepackage{adjustbox}
+\usepackage{multirow}
+
 % Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
 % thus preventing page breaks from occurring within multiline equations. Use:
 \interdisplaylinepenalty=2500
@@ -112,7 +117,7 @@ Time is slotted in frames of 10 ms and each one of these is split into 10 subfra
 The goal is to discover an adaptive ABS mask that maximizes the UEs' performance and it's found as the result of an optimization problem. Our idea is to exploit a reinforcement learning (RL) approach, the so called Q-learning technique in order to reach the fairness between the shared resources and set the best ABS mask in a self-tuning manner for each specific scenario.\\
 Thanks to the LTE environment simulator MONSTeR (MObile Networks SimulaToR) \cite{monster}, a framework built around the LTE system toolbox available in Matlab, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.
 \begin{figure}[h]
-\includegraphics[scale=0.87]{figures/ABS.png}
+\includegraphics[scale=0.80]{figures/ABS.png}
 \caption{Example of a typical HetNet with a macro and some micros used for throughput enhancement in high density utilization area; a micro is placed on the edge of the coverage area for improving the border throughput}
 \end{figure}     
 
@@ -158,12 +163,44 @@ Q(S_{t+1},A_{t+1})=Q(S_{t},A_{t})+\alpha[R(S_{t},A_{t})-Q(S_{t},A_{t})]
 \end{equation*}
 where $ R  $ is the maximized expected reward and $\alpha$ indicates with which rates we take actions towards the best Q-values achievable.
 \subsection{Simulation settings}
-\textcolor{red}{In the present work in order to evaluate the proposed algorithm we run out an extensive Matlab simulation using MONSTeR. We generated an urban scenario of 900 squared meters with 7 horizontal and 6 vertical streets, between streets there are buildings with height uniformly distribuited from 20 to 50 meters. We placed 1 macro eNodeB at the center of the city and 3 micros equally distribuited with distance from the macro \textbf{40 m}, where the former has height 35 m and 50 Resource Blocks (RB) and the latter have height 25 m and 25 RBs. The mobility of the users is generated randomly, 15 users move with velocity \textbf{70 m/s} along sidewalks and at each cross have equally distribuited probability to turn left/right or go straight ahead.\\
+\textcolor{red}{In the present work in order to evaluate the proposed algorithm we run out an extensive Matlab simulation using MONSTeR. We generated an urban scenario of 9000 squared meters with 7 horizontal and 6 vertical streets, between streets there are buildings with height uniformly distribuited from 20 to 50 meters. We placed 1 macro eNodeB at the center of the city and 3 micros equally distribuited with distance from the macro \textbf{40 m}, where the former has height 35 m and 50 Resource Blocks (RB) and the latter have height 25 m and 25 RBs. The mobility of the users is generated randomly, 15 users move with velocity \textbf{70 m/s} along sidewalks and at each cross have equally distribuited probability to turn left/right or go straight ahead.\\
 To simulate the channel and the wireless communication we considered the Winner II channel model with \textbf{dense urban} propagation scenario implemented inside Matlab Communications System Toolbox.
-To asses the worth of our algorithm we considered to main metrics the BER and the average throughput of the users involved.
+To asses the worth of our algorithm we considered as main metrics the Bit Error Rate (BER) and the average throughput of involved users and compared the proposed optimization with other 2 ABS choice policy in 3 different traffic scenario.
+\begin{itemize}
+	\item[Static ABS]: the number of Almost Blank Subframes remains constant to 4 over the entire simulation and  cells use the same ABS mask 
+    [0,1,0,1,0,1,0,1,0,0]
+    \item[Random ABS]:  at each frame macro cell randomlY selects the ABS mask choosing over three possible action:increae, decrease or keep constant the number of almost blank subframes. Each 
+\end{itemize}
 }
+\bgroup
+\def\arraystretch{1.2}%  1 is the default, change whatever you need
+\begin{footnotesize}
+	\begin{table}[t]
+		\centering
+		\vspace{10pt}
+		\caption{Adaptation algorithm parameters}
+		\label{table:params}
+		\begin{tabular}{lcc} 
+			\hline
+			\multicolumn{1}{l|}{\scshape ABS policy} & \multicolumn{1}{c}{\scshape Parameter}   	& \scshape Value    \\ \hline
+			\multicolumn{1}{l|}{Random policy}       & \multicolumn{1}{c|}{$P_{increasing}$} 		& 5                 \\ 
+			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$P_{constant}$} 			& 3\\
+			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$P_{decreasing}$} 		& 3       \\ \hline
+			\multicolumn{1}{l|}{Static}				& \multicolumn{1}{c|}{$N_{ABS}$} 	 			& 30 s		     \\         
+			\multicolumn{1}{l|}{}					& \multicolumn{1}{c|}{maximum buffer size} 	 & 30 s		     \\           
+			\multicolumn{1}{l|}{Q-learning}			& \multicolumn{1}{c|}{maximum buffer size} 	 & 30 s		     \\   
+			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$\gamma$}                  & 2                 \\ 
+			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$\alpha$}                  & 2                 \\              
+		\end{tabular}
+	\end{table}
+\end{footnotesize}
+\egroup
+
+
 \subsection{Training Phase}
-\textcolor{red}{The learning algorithm was trained over \textbf{N} different simulations composesed of 125 frames for a total time simulation of \textbf{N*125} with }
+\textcolor{red}{The learning algorithm was trained over \textbf{N} different simulations composed of 125 frames of 10 ns for a total of \textbf{N*125} frames and simulated time \textbf{N*125*10ns} seconds.
+Using the off-policy propery of the Q-learning algorithm we ensured that all possible states were visited several times such that the value function for the pair state action could be well approximate.
+The generated traffic used}
 \subsection{Test Phase}
 In the simulations that have been put in place, the number of users was from 10 up to 25 randomly distributed between the cells (3 micros and a macro) and they move casually through a simulated urban scenario\footnote{Physical model adopted eHATA: Extended Okumura Hata model for path loss and MATLAB lteFading for fading.}  with a constant speed equals to 1 m/s. The packet generation from an user is modelled as a Possion process of rate $\lambda$ which is taken from a Gaussian distribution $\lambda \sim \mathcal{N}(10,5)$. So whenever a generation event occurs a packet file is created to be sent to the eNodeB with a certain probability inversely proportional to the size $\lbrace$\textcolor{red}{\textbf{to be defined}} $\rbrace$bit, i.e. the smallest packet will benefit of an higher likelihood due to the fact that we're simulating a realistic human behavior during a web surfing period.\\
 \\
