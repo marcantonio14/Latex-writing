@@ -162,31 +162,32 @@ After Q-values have been enough discovered, the Q-learning function points out h
 Q(S_{t+1},A_{t+1})=Q(S_{t},A_{t})+\alpha[R(S_{t},A_{t})-Q(S_{t},A_{t})]
 \end{equation*}
 where $ R  $ is the maximized expected reward and $\alpha$ indicates with which rates we take actions towards the best Q-values achievable.
-\subsection{Simulation settings}
-\textcolor{red}{In the present work in order to evaluate the proposed algorithm we run out an extensive Matlab simulation using MONSTeR. We generated an urban scenario of 9000 squared meters with 7 horizontal and 6 vertical streets, between streets there are buildings with height uniformly distribuited from 20 to 50 meters. We placed 1 macro eNodeB at the center of the city and 3 micros equally distribuited with distance from the macro \textbf{40 m}, where the former has height 35 m and 50 Resource Blocks (RB) and the latter have height 25 m and 25 RBs. The mobility of the users is generated randomly, 15 users move with velocity \textbf{70 m/s} along sidewalks and at each cross have equally distribuited probability to turn left/right or go straight ahead.\\
+\section{Simulation Settings}
+In the present work in order to evaluate the proposed algorithm we run out an extensive Matlab simulation using MONSTeR. We generated an urban scenario of 9000 squared meters with 7 horizontal and 6 vertical streets and among them we located buildings with height uniformly distributed from 20 to 50 meters. Then only a macro eNodeB is placed at the center of the city and 3 micros are equally distributed with distance from the macro of \textbf{40 m}; the former has height 35 m and 50 Resource Blocks (RB) and the latter have height 25 m and 25 RBs. The mobility of the users is generated randomly, 15 users move with velocity \textbf{70 m/s} along sidewalks and at each cross have the same probability to turn left/right or to go straight ahead.\\
 To simulate the channel and the wireless communication we considered the Winner II channel model with \textbf{dense urban} propagation scenario implemented inside Matlab Communications System Toolbox.
-To asses the worth of our algorithm we considered as main metrics the Bit Error Rate (BER) and the average throughput of involved users and compared the proposed optimization with other 2 ABS choice policy in 3 different traffic scenario.
+To assess the worth of our algorithm we considered as main metrics the Bit Error Rate (BER) and the average throughput of involved users therefore we compared the proposed optimization with other 2 ABS choice policy in 3 different traffic scenarios:
 \begin{itemize}
-	\item[Static ABS]: the number of Almost Blank Subframes remains constant to 4 over the entire simulation and  cells use the same ABS mask 
-    [0,1,0,1,0,1,0,1,0,0]
-    \item[Random ABS]:  at each frame macro cell randomlY selects the ABS mask choosing over three possible action:increae, decrease or keep constant the number of almost blank subframes. Each 
+	\item \textbf{Static ABS}: the number of Almost Blank Subframes remains constant to 4 over the entire simulation and  cells use the same ABS mask 
+    [0,1,0,1,0,1,0,1,0,0];
+    \item \textbf{Random ABS}:  at each frame, macro cell randomly selects the ABS mask choosing over three possible action: increase, decrease or keep constant the number of almost blank subframes. Each action has the same probability, however if we are dealing with 0 ABS the only possible actions are to keep constant or increase with propability respectively 1/3, 2/3. The case of 10 ABS is handled analogously but with descreasing action in lieu of increasing.
 \end{itemize}
-}
+Table \ref{table:policyABS} sums up the ABS policy parameters.\\
 \bgroup
 \def\arraystretch{1.2}%  1 is the default, change whatever you need
 \begin{footnotesize}
-	\begin{table}[t]
+	\begin{table}[th]
+		\label{table:policyABS}
 		\centering
 		\vspace{10pt}
-		\caption{Adaptation algorithm parameters}
+		\caption{ABS policy algorithm parameters}
 		\label{table:params}
 		\begin{tabular}{lcc} 
 			\hline
 			\multicolumn{1}{l|}{\scshape ABS policy} & \multicolumn{1}{c}{\scshape Parameter}   	& \scshape Value    \\ \hline
-			\multicolumn{1}{l|}{Random policy}       & \multicolumn{1}{c|}{$P_{increasing}$} 		& 5                 \\ 
-			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$P_{constant}$} 			& 3\\
-			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$P_{decreasing}$} 		& 3       \\ \hline
-			\multicolumn{1}{l|}{Static}				& \multicolumn{1}{c|}{$N_{ABS}$} 	 			& 30 s		     \\         
+			\multicolumn{1}{l|}{Random policy}       & \multicolumn{1}{c|}{$Prob[a_{incr}]$} 		& 5                 \\ 
+			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$Prob[a_{cost}]$} 			& 3\\
+			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$Prob[a_{decr}]$} 		& 3       \\ \hline
+			\multicolumn{1}{l|}{Static}				& \multicolumn{1}{c|}{$N_{ABS}$} 	 			& 30 s		     \\  \hline   
 			\multicolumn{1}{l|}{}					& \multicolumn{1}{c|}{maximum buffer size} 	 & 30 s		     \\           
 			\multicolumn{1}{l|}{Q-learning}			& \multicolumn{1}{c|}{maximum buffer size} 	 & 30 s		     \\   
 			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$\gamma$}                  & 2                 \\ 
@@ -195,17 +196,16 @@ To asses the worth of our algorithm we considered as main metrics the Bit Error 
 	\end{table}
 \end{footnotesize}
 \egroup
-
+\noindent The packet generation event from an user is modelled as a Possion process of rate $\lambda$ which is taken from a Gaussian distribution \textbf{$\lambda \sim \mathcal{N}(10,5)$}. So whenever a generation event occurs a packet file is created to be sent to the eNodeB with a certain probability inversely proportional to the size $\lbrace$\textcolor{red}{\textbf{to be defined}} $\rbrace$bit, i.e. the smallest packet will benefit of an higher likelihood due to the fact that we're simulating a realistic human behavior during a web surfing period.\\
 
 \subsection{Training Phase}
 \textcolor{red}{The learning algorithm was trained over \textbf{N} different simulations composed of 125 frames of 10 ns for a total of \textbf{N*125} frames and simulated time \textbf{N*125*10ns} seconds.
-Using the off-policy propery of the Q-learning algorithm we ensured that all possible states were visited several times such that the value function for the pair state action could be well approximate.
-The generated traffic used}
+Using the off-policy propery of the Q-learning algorithm we ensured that all possible states were visited several times such that the value functions for the pair state-action could be well approximate.}
 \subsection{Test Phase}
-In the simulations that have been put in place, the number of users was from 10 up to 25 randomly distributed between the cells (3 micros and a macro) and they move casually through a simulated urban scenario\footnote{Physical model adopted eHATA: Extended Okumura Hata model for path loss and MATLAB lteFading for fading.}  with a constant speed equals to 1 m/s. The packet generation from an user is modelled as a Possion process of rate $\lambda$ which is taken from a Gaussian distribution $\lambda \sim \mathcal{N}(10,5)$. So whenever a generation event occurs a packet file is created to be sent to the eNodeB with a certain probability inversely proportional to the size $\lbrace$\textcolor{red}{\textbf{to be defined}} $\rbrace$bit, i.e. the smallest packet will benefit of an higher likelihood due to the fact that we're simulating a realistic human behavior during a web surfing period.\\
-\\
+
 \begin{figure}[h]
 \includegraphics[scale=0.68]{figures/traj.png}
+\label{img:map}
 \caption{Example of UEs in the urban simulated environment and highlighted trajectories; red dots represent the micros and the green the macro.} 
 \end{figure}
 After all these necessary premises, the first step is to run a big amount of simulations with the purpose of explore all the couples state-action, the Q-values, following the random policy and then the Q-learning will be applied to find out which will be the optimal policy to take. So at this point a several number of simulations with the standard ABS policy and with optimal one will be run to compare the results in terms of throughput (and delay?).         
