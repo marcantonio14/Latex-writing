@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  25 FEB 2018 19:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  25 FEB 2018 19:56
 entering extended mode
 **./research-paper.tex
 (research-paper.tex
@@ -1721,26 +1721,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ] [2 <./figures/ABS.png>]
-
-Package caption Warning: \label without proper reference on input line 184.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `table:policyABS' on page 3 undefined on input line 17
-9.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--205
+Underfull \hbox (badness 10000) in paragraph at lines 203--204
 
  []
 
 <figures/traj.png, id=27, 376.40625pt x 304.88907pt>
 File: figures/traj.png Graphic file (type png)
 <use figures/traj.png>
-Package pdftex.def Info: figures/traj.png  used on input line 212. on input lin
-e 212.
+Package pdftex.def Info: figures/traj.png  used on input line 211. on input lin
+e 211.
 Package pdftex.def Info: Requested size: 255.95285pt x 207.32182pt on input lin
-e 212.
+e 211.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1758,17 +1749,17 @@ Before submitting the final camera ready copy, remember to:
 
 [4 <./figures/traj.png>] (research-paper.aux)
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 38152 strings out of 493312
- 894482 string characters out of 3138900
+ 38151 strings out of 493312
+ 894460 string characters out of 3138900
  1082573 words of memory out of 3000000
- 41073 multiletter control sequences out of 15000+200000
+ 41072 multiletter control sequences out of 15000+200000
  647050 words of font info for 139 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,11n,128p,10367b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 74i,10n,128p,10367b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
@@ -1785,7 +1776,7 @@ ier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C
 :/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/
 MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on research-paper.pdf (4 pages, 267088 bytes).
+Output written on research-paper.pdf (4 pages, 266716 bytes).
 PDF statistics:
  91 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

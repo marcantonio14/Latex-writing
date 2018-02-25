@@ -176,16 +176,15 @@ To assess the worth of our algorithm we considered as main metrics the Bit Error
     [0,1,0,1,0,1,0,1,0,0];
     \item \textbf{Random ABS}:  at each frame, macro cell randomly selects the ABS mask choosing over three possible action: increase, decrease or keep constant the number of almost blank subframes. Each action has the same probability, however if we are dealing with 0 ABS the only possible actions are to keep constant or increase with probability respectively 1/3 and 2/3. The case of 10 ABS is handled analogously but with decreasing action in lieu of increasing.
 \end{itemize}
-Table \ref{table:policyABS} sums up the ABS policy parameters.\\
+Table \ref{table:a} sums up the ABS policy parameters.
+
 \bgroup
 \def\arraystretch{1.2}%  1 is the default, change whatever you need
 \begin{footnotesize}
-	\begin{table}[th]
-		\label{table:policyABS}
+	\begin{table}[!htb]
 		\centering
 		\vspace{10pt}
-		\caption{ABS policy algorithm parameters}
-		\label{table:params}
+		\caption{ABS policy algorithm parameters}\label{table:a}
 		\begin{tabular}{lcc} 
 			\hline
 			\multicolumn{1}{l|}{\scshape ABS policy} & \multicolumn{1}{c}{\scshape Parameter}   	& \scshape Value    \\ \hline
