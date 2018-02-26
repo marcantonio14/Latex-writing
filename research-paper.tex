@@ -66,8 +66,8 @@
 \linespread{1}
 
 % MC
-\newcommand{\MC}[1]{\textit{\color{red}MC says: #1}}
-\newcommand{\AZ}[1]{\textit{\color{blue}AZ says: #1}}
+\newcommand{\TD}[1]{\textit{\color{blue}DT says: #1}}
+\newcommand{\AZ}[1]{\textit{\color{red}AZ says: #1}}
 \newcommand{\MP}[1]{\textit{\color{green}MP says: #1}}
 
 \usepackage{placeins}
@@ -86,7 +86,7 @@
 \thispagestyle{plain}
 \pagestyle{plain}
 \begin{abstract}
-In this paper we introduce a possible machine-learning approach for the enhanced inter-cell interference coordination (eICIC) in a heterogeneous network (HetNet), where macro and micro cells optimize their downlink transmission in a self-adaptive manner. The idea is to exploit the Q-learning algorithm to guarantee a fair resource sharing between micro and macro cells and so to make the system works in the best performance possible. Indeed this specific reinforcement learning technique is used to find out the optimal policy that leads to the right ABS pattern setting, designed specifically for each scenario. Hence evaluating only a few parameters and changing dynamically the ABS pattern we aim to cope the possible alterations on a realistic environment.\\
+In this paper we introduce a possible machine-learning approach for the enhanced inter-cell interference coordination (eICIC) in a heterogeneous network (HetNet), where macro and micro cells optimize their downlink transmission in a self-adaptive manner. The idea is to exploit the Q-learning algorithm to guarantee a fair resource sharing between micro and macro cells and so to make the system works in the best performance possible. Indeed this specific reinforcement learning technique is used to find out the optimal policy that leads to the right ABS pattern setting, designed specifically for each scenario. Hence evaluating only a few parameters and changing dynamically the ABS pattern we aim to cope the possible alterations on a realistic environment.\TD{Results preview}\\
 
 \textit{Index  Terms}---SON, Self Optimizing Networks, LTE, eICIC, ABS, reinforcement learning, Q-learning, MONSTeR     
 \end{abstract}
@@ -102,7 +102,7 @@ In 2016, global mobile data traffic amounted to 7 exabytes (EB)\footnote{1 EB = 
 These challenges can be solved in a cost-effective, efficient and human-handleable way only through the use of more automated and autonomous systems, such as Self-Organizing Networks (SON): the goal is to minimize the human intervention in the planning, deployment, optimization and maintenance activities of these new networks.\\
 Such a SON conceptually must own, as explained by \cite{ramiro2011self}, the following capabilities:
 \begin{itemize}
-\item Self-Planning: process of identifying the parameter settings of new network elements (like radio parameters of a new eNodeB or a table of neighbor nodes);
+\item Self-Planning: process of identifying the parameter settings of new network elements (like radio parameters of a new eNodeB or a table of neighbour nodes);
 \item Self-Deployment: preparation, installation, authentication and delivery of a status report of
 a new network node in order to get a "plug and play" approach for each new device;
 \item Self-Healing: execution of the routine actions that keep the network operational and/or
@@ -116,18 +116,36 @@ The problem we are facing consists in finding the optimal trade-off between assi
 Accounting the above scenario, the micro could be left underutilized and this would turn out to be a bad exploitation of the resources deployed appositely to enhance the connectivity in some areas, with a following shortage of the user performance in comparison with achievable potential capacity.\\
 Addressing a fair resource sharing, a solution could be stop macros from all the transmissions (some exception signals, like beacons, are always active), for a certain amount of time: this approach is adopted by LTE 3GPP standard and it is known as enhanced Inter Cell Interference Coordination (eICIC). The period in which macros are "silent" is called Almost Blank Subframe (ABS), period over which micros can transmit with reduced interference.\\
 Time is slotted in frames of 10 ms and each one of these is split into 10 subframes, so a macro decides to mute itself in a certain subframe following the ABS mask, that's the pattern of 0's and 1's where 1 indicates the macro's inactivity.\\
-The goal is to discover an adaptive ABS mask that maximizes the UEs' performance and it is found as the result of an optimization problem. Our idea is to use a reinforcement learning (RL) approach, the so called Q-learning technique in order to reach the fairness between the shared resources and to set the best ABS mask in a self-tuning manner for each specific scenario.\\
-Thanks to the LTE environment simulator MONSTeR (MObile Networks SimulaToR) \cite{monster}, a framework built around the LTE system toolbox available in MATLAB, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.
+The goal is to discover an adaptive ABS mask that maximizes the UEs' performance and it is found as the result of an optimization problem. Our idea is to use a reinforcement learning (RL) approach, the so called Q-learning technique \TD{sure?} in order to reach the fairness between the shared resources and to set the best ABS mask in a self-tuning manner for each specific scenario.\\
+Thanks to the LTE environment simulator MONSTeR (MObile Networks SimulaToR) \cite{monster} \TD{Maybe a footnote could be better}, a framework built around the LTE system toolbox available in MATLAB, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.
 \begin{figure}[h]
 \includegraphics[scale=0.80]{figures/ABS.png}
-\caption{Example of a typical HetNet with a macro and some micros used for throughput enhancement in high density utilization area; a micro is placed on the edge of the coverage area for improving the border throughput}\label{img:hetnet}
+\caption{Example of a typical HetNet with a macro and some micros used for throughput enhancement in high density utilization area; a micro is placed on the edge of the coverage area for improving the border throughput \TD{for improving cell edge UEs' throughput.}}\label{img:hetnet}
 \end{figure}     
 
 
-\textcolor{red}{\textbf{TO DO (REMEMBER TO ERASE THIS)
+\textcolor{red}{
+\textbf{TO DO (REMEMBER TO ERASE THIS)}
 \begin{itemize}
 \item \textbf{Results: summary of the main findings}
-\end{itemize}}}  
+\item \textbf{Structure: how the paper is organized}
+\end{itemize}}
+
+\TD{EXAMPLE structure: The rest of the paper is organized as follows: Section II
+presents the state of the art in DASH adaptation logic, with a
+focus on RL-based algorithms. Section III defines the system
+model, detailing the decision making instants, the playout
+buffer behavior and the reward function. Section IV uses these
+notions within a decision making framework, starting from a
+Markov decision process approach to then delve into standard
+and deep Q-learning based ones. Section V provides some
+preliminaries on the neural network structures that will be
+considered in our framework and Section VI presents the
+D-DASH deep Q-learning system. Section VII describes the
+simulation settings/parameters, quantifies the performance of
+D-DASH over synthetic and real channel traces, and compares
+it against selected algorithms from the literature. Finally,
+Section VIII concludes the work.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -135,21 +153,26 @@ Thanks to the LTE environment simulator MONSTeR (MObile Networks SimulaToR) \cit
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In this section we will overview the main proposals in the literature.\\
 First of all we must take in account the solution exposed in \cite{deb2014algorithms} to protect the downlink micro transmissions. Alongside the concept of ABS period they introduced the so called Flexible User Association and Cell selection bias (CSB). As we already know, whenever a UE needs to select a suitable cell for association it chooses the one with the strongest signal and therefore the utilization of the micro most of the time is neglected. LTE has introduced the bias value $\alpha_i$ that is broadcasted to all the UEs. Hence the UE will choose the right cell maximizing the sum between $\alpha_i$ and the received signal power $P_i$ over each i-th cell in the system; obviously higher bias values are assigned to the micros.\\
-The authors of \cite{deb2014algorithms} proposed two algorithms, one for the optimal ABS mask (OPT-ABS) and one for defining the right value for the CBS. The former is split into two parts: the first to search the number of optimal subframes in which the macros are mute and second how to define the optimal ABS pattern. This algorithm turned up to be a NP-hard computational problem, however they proofed that with a clever breakdown in some defined steps it's implementable and the complexity is scalar with number of cells. Instead the latter algorithm compute the biases so that the "association error" (as compared to optimal association) is minimized. This technique shows a shortcoming since that the beforehand knowledge of the best cell is an information not always available and so it needs to be evaluated for each scenario.\\
-Another noteworthy paper is surely \cite{simsek2013enhanced}, here the authors tried to put into practice a similar reinforcement learning approach. The state is made of two parameters, the Signal to Intererence Noise Ratio (SINR) for the player in relation with the macro and the micros, nevertheless these are not values that the eNodeB takes normally in account and we are aiming to use only the minimum number of information that are already exchanged (all the info shared between eNodeB and UE are listed in the 3GPP release 36 \cite{etsi2017136}). 
+Deb \textit{et al.}\cite{deb2014algorithms} proposed two algorithms, one for the optimal ABS mask (OPT-ABS) and one for defining the right value for the CBS. The former is split into two parts: the first to search the number of optimal subframes in which the macros are mute and second how to define the optimal ABS pattern. This algorithm turned up to be a NP-hard computational problem, however they proofed that with a clever breakdown in some defined steps it's implementable and the complexity is scalar with number of cells. Instead the latter algorithm compute the biases so that the "association error" (as compared to optimal association) is minimized. This technique shows a shortcoming since that the beforehand knowledge of the best cell is an information not always available and so it needs to be evaluated for each scenario.\\
+Another noteworthy paper is surely \cite{simsek2013enhanced}, here the authors tried to put into practice a similar reinforcement learning approach. The state is made of two parameters, the Signal to Intererence Noise Ratio (SINR) for the player in relation with the macro and the micros, nevertheless these are not values that the eNodeB takes normally into account and we are aiming to use only the minimum number of information that are already exchanged (all the info shared between eNodeB and UE are listed in the 3GPP release 36 \cite{etsi2017136}) \TD{reducing the system overhead}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{System Model}\label{sec:symo}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In this section we will explain all the operative assumptions, with the theoretical motivations, that we took into account for our proposal.
 \subsection{Problem modelization}
-As stated in \cite{sutton1998reinforcement}, the main book about RL: the reinforcement learning problem is meant to be a straightforward framing of the problem of learning from interaction to achieve a goal. The learner, who is the one that makes the decisions is called the agent and in this scenario will be the macro. The thing it interacts with, comprising everything outside the agent, is called the environment, part played here by the simulator MONSTeR. These interact continually, the agent selecting actions and the environment responding to those actions and presenting new situations to the agent. The environment also yields rewards, numerical values that evaluate the goodness of the last action taken and that the agent tries to maximize over time. At each time step $t$, the agent receives a representation of the environment's state $S_t$, here defined by three parameters:
+As stated in \cite{sutton1998reinforcement}, the main book about RL: the reinforcement learning problem is meant to be a straightforward framing of the problem of learning from interaction to achieve a goal. The learner, who is the one that makes the decisions is called the agent and in this scenario will be the macro. The thing it interacts with, comprising everything outside the agent, is called the environment, part played here by the simulator MONSTeR. These interact continually, the agent selecting actions and the environment responding \TD{reacting} to those actions and presenting new situations to the agent. The environment also yields rewards, numerical values that evaluate the goodness of the last action taken and that the agent tries to maximize over time. \TD{Defining $S$ as the set of all possible states and $A_s$ as the actions avaiable at state $s$, the problem is modeled as a finite Markov Decision Process (MDP) defined as a 5-tuple:
+\begin{equation*}
+(S, A_s, P_a(s_t, s_{t+1}), R_a(s_t, s_{t+1}), \gamma)
+\end{equation*}
+where $P_a(s_t, s_{t+1})$ represents the probability to move from state $s_t$ to state $s_{t+1}$ with action $a \in A_s$, $R_a(s_t, s_{t+1})$ describes the obtained reward from the transaction $s_t$, $s_{t+1}$ with action $a_t \in A_s$ and the discount factor $\gamma$ reflects how to weight future actions' reward. Therefore the environment is represented as a Markov chain in which each transaction rely on the agent action and environment response. We need a small as possible state space to reduce the complexity of the MDP, but at the same time each state should contains
+enough information to preserve the Markov's property. Hence, } at each time step $t$, the agent receives a representation of the environment's state $S_t$, here defined by three parameters:
 \begin{itemize}
 \item the ratio between the number of users in the macro and in the micro, quantized in four values which indicates if there are many more users in the macro, a little bit more in the macro, a little bit more in the micro or many more in the micro;
 \item the ratio between the throughput of the macro cell and the mean value of the throughtput of all micro cells, quantized in five values;
 \item the number of ABS is quantized in six values where each of them stays for the amount of subframes in which the macro cell stays silent. In particular we just consider ABS masks composed by an even number of silent subframes, that are actually six.
 \end{itemize}
-We assume that the total number of possible states in our environment is exactly $4\cdot 5\cdot 6=120$. Depending in which state the agent is, it selects an action $A_t$ from the set of all actions $A=\lbrace-2,0,2\rbrace$ that will modify the ABS mask by this amount. In the states where the ABS mask is equal to 0 there is not the decreasing-action (-2) and in the states with ABS mask equal to 10 there is not the increasing action (+2). The reward is a number between 0 and 10 and it must be an high value when the ratio between the thoughput per user in the macro cell and the throughput per user in the microcells is close to one. In fact this condition is index of fairness between the downlink trasmissions for users in the macro cell and users in the micro cells. In particular the ratio we consider is: 
+\TD{Then, for the curse of dimensionality} the total number of possible states in our environment is exactly $4\cdot 5\cdot 6=120$ which allow us to handle the convergence problem. Depending in which state the agent is, it selects an action $A_t$ from the set of all actions $A=\lbrace-2,0,2\rbrace$ that will modify the ABS mask by this amount. In the states where the ABS mask is equal to 0 there is not the decreasing-action (-2) and in the states with ABS mask equal to 10 there is not the increasing action (+2). The reward is a number between 0 and 10 and it must be an high value when the ratio between the thoughput per user in the macro cell and the throughput per user in the microcells is close to one. In fact this condition is index of fairness between the downlink trasmissions for users in the macro cell and users in the micro cells. In particular the ratio we consider is: 
 \begin{equation*}
 r(n^{m},n^{M},S^{m},S^{M})=\bigg(\frac{ S^{M} / n^{M} }{S^{m} / n^{m}} \bigg)= \bigg(\frac{ S^{M} \cdot n^{m}}{S^{m} \cdot n^{M}} \bigg)
 \end{equation*}
@@ -158,8 +181,13 @@ And so, the reward function we consider is:
 Reward(n^{m},n^{M},S^{m},S^{M}) = \begin{cases} 10 \cdot r(n^{m},n^{M},S^{m},S^{M}), & \mbox{if } r<1 \\ max( 10 \cdot(2 - r(n^{m},n^{M},S^{m},S^{M}),0), & \mbox{if } r>1 \end{cases}
 \end{dmath*} 
 where $m$ stands for micro and $M$ for macros and it shows the discrepancy between the actual system condition and the equilibrium we're aiming to. \\
-At each time step, the agent maps from states to probabilities of taking each possible action. This mapping is called policy and is denoted as $\pi_t$. Reinforcement
-learning specifies how the agent changes its policy in relation of its experience. The agent’s goal so is to maximize the total amount of reward it gains on the long term.
+At each time step, the agent maps from states to probabilities of taking each possible action. This mapping is called policy and is denoted as \TD{$\pi:S \times S \times A \rightarrow R$}. \TD{Reinforcement
+learning specifies how the agent changes its policy in relation of its experience. The agent’s goal is to learn actions that maximize the discounted reward, that is the total amount of reward it gains on the long term:
+\begin{equation*}
+G_t = \sum_{k=0}^{\infty}{\gamma^kR_{t+k+1}}
+\end{equation*}}
+\TD{Actions can't follow a greedy selection, a myopic choice could yield the MDP to lower yielding states.}
+
 \subsection{Q-learning technique}
 Q-learning algorithm was proposed by Watkins in \cite{watkins1992q} and consists in maintaining a table of estimated expected long-run reward, called indeed Q-values and written as $Q(S,A)$, for each state-action couple. This technique is classified between the off-policy methods, in other words it evaluates or improves a policy different from that used to generate the data, as explained by \cite{sutton1998reinforcement}. So the idea to exploit two policies, one that is learned about and that becomes the optimal policy (target policy), and an exploratory one used to estimate the Q-values (exploration policy). Despite that the most used policies to implement the latter are the $\epsilon$-greedy or the softmax, we decided to use a totally random selection policy. \\
 After Q-values have been enough discovered, the Q-learning function points out how to update the Q-value at each step and it's described as follows:
@@ -216,7 +244,7 @@ The final test has been carried out in the same scenario, that is a simulation o
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}\label{sec:res}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{\textcolor{addressing long term throughput}}The Results section contains a selection of the most relevant results with the explanation of their meaning. Please, not that you do NOT have to describe the shape of the curves that can be seen in the figures, but the reasons WHY such curves have that shape!
+\textbf{\textcolor{red}{addressing long term throughput}}The Results section contains a selection of the most relevant results with the explanation of their meaning. Please, not that you do NOT have to describe the shape of the curves that can be seen in the figures, but the reasons WHY such curves have that shape!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}\label{sec:conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
