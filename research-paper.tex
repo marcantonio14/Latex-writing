@@ -207,8 +207,7 @@ Table \ref{table:a} sums up the ABS policy parameters.
 			\multicolumn{1}{l|}{Random policy}       & \multicolumn{1}{c|}{$Prob[a_{incr}]$} 		& 5                 \\ 
 			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$Prob[a_{cost}]$} 			& 3\\
 			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$Prob[a_{decr}]$} 		& 3       \\ \hline
-			\multicolumn{1}{l|}{Static}				& \multicolumn{1}{c|}{$N_{ABS}$} 	 			& 30 s		     \\  \hline   
-			\multicolumn{1}{l|}{}					& \multicolumn{1}{c|}{maximum buffer size} 	 & 30 s		     \\           
+			\multicolumn{1}{l|}{Static}				& \multicolumn{1}{c|}{$N_{ABS}$} 	 			& 30 s		     \\  \hline    
 			\multicolumn{1}{l|}{Q-learning}			& \multicolumn{1}{c|}{maximum buffer size} 	 & 30 s		     \\   
 			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$\gamma$}                  & 2                 \\ 
 			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$\alpha$}                  & 2                 \\              
@@ -216,6 +215,7 @@ Table \ref{table:a} sums up the ABS policy parameters.
 	\end{table}
 \end{footnotesize}
 \egroup
+
 \noindent We compared the system over three different traffic models. In the simple web browsing model, we are simulating a realistic human behavior during a web surfing period: packet request events from an user is modelled as a Poisson process of rate $\lambda$, which is taken from a Gaussian distribution $\lambda\sim\mathcal{N}(75, 10)$. So whenever a generation event occurs a packet file is created with a random dimension. Specifically the packet size could be $\lbrace$10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000$\rbrace$ with a probability inversely proportional to the size itself, i.e. the smallest packet will benefit of an higher likelihood.\\
 In the full buffer model we imposed that at each moment a packet is available to be transmitted with a size of 10 Mb, therefore the system is saturated from users' requests.\\
 The last one considered, the video steaming model generates a video steaming session from real traces of the video \textit{Big Buck Bunny}.
