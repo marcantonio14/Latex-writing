@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  26 FEB 2018 11:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  27 FEB 2018 22:33
 entering extended mode
 **./research-paper.tex
 (research-paper.tex
@@ -1577,58 +1577,58 @@ Package: placeins 2005/04/18  v 2.2
 (research-paper.aux)
 \openout1 = `research-paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <5> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <7> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <8> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <9> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <11> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <11> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <17> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <20> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 81.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <24> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 77.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 81.
 
 -- Lines per column: 57 (approximate, difference = 11.38536pt).
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
@@ -1685,24 +1685,24 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 85.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 89.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1pcr.fd"
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Underfull \hbox (badness 2310) in paragraph at lines 88--90
+Underfull \hbox (badness 2310) in paragraph at lines 92--94
 \T1/ptm/b/n/9 learning ap-proach for the en-hanced inter-cell in-ter-fer-ence
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--90
+Underfull \hbox (badness 10000) in paragraph at lines 92--94
 
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 101.
+LaTeX Font Info:    Try loading font information for U+msa on input line 105.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 101.
+LaTeX Font Info:    Try loading font information for U+msb on input line 105.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1710,10 +1710,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <figures/ABS.png, id=4, 304.9794pt x 192.4791pt>
 File: figures/ABS.png Graphic file (type png)
 <use figures/ABS.png>
-Package pdftex.def Info: figures/ABS.png  used on input line 122. on input line
- 122.
+Package pdftex.def Info: figures/ABS.png  used on input line 126. on input line
+ 126.
 Package pdftex.def Info: Requested size: 243.98384pt x 153.98346pt on input lin
-e 122.
+e 126.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1724,15 +1724,66 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <figures/traj.png, id=32, 441.14813pt x 381.67593pt>
 File: figures/traj.png Graphic file (type png)
 <use figures/traj.png>
-Package pdftex.def Info: figures/traj.png  used on input line 228. on input lin
-e 228.
+Package pdftex.def Info: figures/traj.png  used on input line 225. on input lin
+e 225.
 Package pdftex.def Info: Requested size: 251.45705pt x 217.55754pt on input lin
-e 228.
+e 225.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-(research-paper.bbl)
+<figures/WB.png, id=33, 421.575pt x 316.18124pt>
+File: figures/WB.png Graphic file (type png)
+<use figures/WB.png>
+Package pdftex.def Info: figures/WB.png  used on input line 233. on input line 
+233.
+Package pdftex.def Info: Requested size: 269.80707pt x 202.3553pt on input line
+ 233.
+
+Overfull \hbox (14.18416pt too wide) in paragraph at lines 233--234
+[][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/FB.png, id=34, 421.575pt x 316.18124pt>
+File: figures/FB.png Graphic file (type png)
+<use figures/FB.png>
+Package pdftex.def Info: figures/FB.png  used on input line 238. on input line 
+238.
+Package pdftex.def Info: Requested size: 269.80707pt x 202.3553pt on input line
+ 238.
+
+Overfull \hbox (14.18416pt too wide) in paragraph at lines 238--239
+[][] 
+ []
+
+<figures/VS.png, id=35, 421.575pt x 316.18124pt>
+File: figures/VS.png Graphic file (type png)
+<use figures/VS.png>
+Package pdftex.def Info: figures/VS.png  used on input line 243. on input line 
+243.
+Package pdftex.def Info: Requested size: 269.80707pt x 202.3553pt on input line
+ 243.
+
+Overfull \hbox (14.18416pt too wide) in paragraph at lines 243--244
+[][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 1360) has occurred while \output is active []
+
+ [4 <./figures/traj.png> <./figures/WB.png (PNG copy)>] (research-paper.bbl
+Underfull \vbox (badness 2856) has occurred while \output is active []
+
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1744,34 +1795,35 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4 <./figures/traj.png>] (research-paper.aux) ) 
+[5 <./figures/FB.png (PNG copy)> <./figures/VS.png (PNG copy)>]
+(research-paper.aux) ) 
 Here is how much of TeX's memory you used:
- 38153 strings out of 493312
- 894488 string characters out of 3138900
- 1084573 words of memory out of 3000000
- 41074 multiletter control sequences out of 15000+200000
+ 38174 strings out of 493312
+ 894761 string characters out of 3138900
+ 1085573 words of memory out of 3000000
+ 41092 multiletter control sequences out of 15000+200000
  647050 words of font info for 139 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,10n,128p,10367b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fon
-ts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-mi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/u
-tmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on research-paper.pdf (4 pages, 275389 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
+/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on research-paper.pdf (5 pages, 381982 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
+ 98 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 

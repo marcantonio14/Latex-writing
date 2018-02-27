@@ -66,9 +66,13 @@
 \linespread{1}
 
 % MC
-\newcommand{\TD}[1]{\textit{\color{blue}DT says: #1}}
+\newcommand{\FC}[1]{\textit{\color{blue}DT says: #1}}
 \newcommand{\AZ}[1]{\textit{\color{red}AZ says: #1}}
 \newcommand{\MP}[1]{\textit{\color{green}MP says: #1}}
+
+\newcommand{\TD}[1]{\textit{\color{blue}DT says: #1}}
+\newcommand{\MA}[1]{\textit{\color{green}DT says: #1}}
+\newcommand{\RM}[1]{\textit{\color{red}DT says: #1}}
 
 \usepackage{placeins}
 
@@ -86,7 +90,7 @@
 \thispagestyle{plain}
 \pagestyle{plain}
 \begin{abstract}
-In this paper we introduce a possible machine-learning approach for the enhanced inter-cell interference coordination (eICIC) in a heterogeneous network (HetNet), where macro and micro cells optimize their downlink transmission in a self-adaptive manner. The idea is to exploit the Q-learning algorithm to guarantee a fair resource sharing between micro and macro cells and so to make the system works in the best performance possible. Indeed this specific reinforcement learning technique is used to find out the optimal policy that leads to the right ABS pattern setting, designed specifically for each scenario. Hence evaluating only a few parameters and changing dynamically the ABS pattern we aim to cope the possible alterations on a realistic environment.\TD{Results preview}\\
+In this paper we introduce a possible machine-learning approach for the enhanced inter-cell interference coordination (eICIC) in a heterogeneous network (HetNet), where macro and micro cells optimize their downlink transmission in a self-adaptive manner. The idea is to exploit the Q-learning algorithm to guarantee a fair resource sharing between micro and macro cells and so to make the system works in the best performance possible. Indeed this specific reinforcement learning technique is used to find out the optimal policy that leads to the right ABS pattern setting, designed specifically for each scenario. Hence evaluating only a few parameters and changing dynamically the ABS pattern we aim to cope the possible alterations on a realistic environment. Finally, three different ABS policies are evaluated over many traffic models in term of the average throughput per user.\\
 
 \textit{Index  Terms}---SON, Self Optimizing Networks, LTE, eICIC, ABS, reinforcement learning, Q-learning, MONSTeR     
 \end{abstract}
@@ -117,23 +121,16 @@ Accounting the above scenario, the micro could be left underutilized and this wo
 Addressing a fair resource sharing, a solution could be stop macros from all the transmissions (some exception signals, like beacons, are always active), for a certain amount of time: this approach is adopted by LTE 3GPP standard and it is known as enhanced Inter Cell Interference Coordination (eICIC). The period in which macros are "silent" is called Almost Blank Subframe (ABS), period over which micros can transmit with reduced interference.\\
 Time is slotted in frames of 10 ms and each one of these is split into 10 subframes, so a macro decides to mute itself in a certain subframe following the ABS mask, that's the pattern of 0's and 1's where 1 indicates the macro's inactivity.\\
 The goal is to discover an adaptive ABS mask that maximizes the UEs' performance and it is found as the result of an optimization problem. Our idea is to use a reinforcement learning (RL) approach, the Q-learning technique, in order to reach the fairness between the shared resources and to set the best ABS mask in a self-tuning manner for each specific scenario.\\
-Thanks to the LTE environment simulator MONSTeR (MObile Networks SimulaToR) \cite{monster}, a framework built around the LTE system toolbox available in MATLAB, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.
+Thanks to the LTE environment simulator MONSTeR (MObile Networks SimulaToR) \cite{monster}, a framework built around the LTE system toolbox available in MATLAB, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.\\
 \begin{figure}[h]
 \includegraphics[scale=0.80]{figures/ABS.png}
 \caption{Example of a typical HetNet with a macro and some micros used for throughput enhancement in high density utilization area; a micro is placed on the edge of the coverage area for improving throughput of the border UEs. }\label{img:hetnet}
 \end{figure}     
-
-
-\textcolor{red}{
-\textbf{TO DO (REMEMBER TO ERASE THIS)}
-\begin{itemize}
-\item \textbf{Results: summary of the main findings}
-\end{itemize}}
-
+\noindent Simulations prove that our modeling choice is not the optimal one but could be a good starting point to develop eICIC optimization through Q-Learning, indeed the proposed algorithm performs poorly respect the baseline solutions.\\
 The rest of the paper is organized as follows: Section II
-presents how eICIC is addressed in literature. Section III introduces the system
+presents how eICIC is addressed in literature. Section III introduces the adopted system
 model, specifying the necessary theoretical background to explain the steps that leaded us to define it. 
-Section IV states all the simulation settings adopted for the environment and testing scenario; finally Section V  concludes the work analyzing the achieved results and comparing the obtained policy with benchmark ones.
+Section IV states all the simulation settings used in the environment and testing scenario; finally Section V  concludes the work analyzing the achieved results and comparing the obtained policy with benchmark ones.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -200,17 +197,17 @@ Table \ref{table:a} sums up the ABS policy parameters.
 	\begin{table}[!htb]
 		\centering
 		\vspace{10pt}
-		\caption{ABS policy algorithm parameters}\label{table:a}
+		\caption{ABS policy algorithm parameters.}\label{table:a}
 		\begin{tabular}{lcc} 
 			\hline
-			\multicolumn{1}{l|}{\scshape ABS policy} & \multicolumn{1}{c}{\scshape Parameter}   	& \scshape Value    \\ \hline
-			\multicolumn{1}{l|}{Random policy}       & \multicolumn{1}{c|}{$Prob[a_{incr}]$} 		& 5                 \\ 
-			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$Prob[a_{cost}]$} 			& 3\\
-			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$Prob[a_{decr}]$} 		& 3       \\ \hline
-			\multicolumn{1}{l|}{Static}				& \multicolumn{1}{c|}{$N_{ABS}$} 	 			& 30 s		     \\  \hline    
-			\multicolumn{1}{l|}{Q-learning}			& \multicolumn{1}{c|}{maximum buffer size} 	 & 30 s		     \\   
-			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$\gamma$}                  & 2                 \\ 
-			\multicolumn{1}{l|}{}                   	& \multicolumn{1}{c|}{$\alpha$}                  & 2                 \\              
+			\multicolumn{1}{l|}{\scshape ABS policy} & \multicolumn{1}{c}{\scshape Parameter}   & \scshape Value    \\ \hline
+			\multicolumn{1}{l|}{Random policy}       & \multicolumn{1}{c|}{$Prob[a_{incr}]$} 	& $1/3$                       \\ 
+			\multicolumn{1}{l|}{}                    & \multicolumn{1}{c|}{$Prob[a_{cost}]$} 	& $1/3$      \\
+			\multicolumn{1}{l|}{}                    & \multicolumn{1}{c|}{$Prob[a_{decr}]$} 	& $1/3$       \\ \hline
+			\multicolumn{1}{l|}{Static}				 & \multicolumn{1}{c|}{$N_{ABS}$} 	 		& 4		     \\  \hline    
+			\multicolumn{1}{l|}{Q-learning}			 & \multicolumn{1}{c|}{$\gamma$} 	 		& 0.9		     \\   
+		
+			\multicolumn{1}{l|}{}                    & \multicolumn{1}{c|}{$\alpha$}            & 0.4                 \\              
 		\end{tabular}
 	\end{table}
 \end{footnotesize}
@@ -232,12 +229,29 @@ The final test has been carried out in the same scenario, that is a simulation o
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}\label{sec:res}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{\textcolor{red}{addressing long term throughput}}The Results section contains a selection of the most relevant results with the explanation of their meaning. Please, not that you do NOT have to describe the shape of the curves that can be seen in the figures, but the reasons WHY such curves have that shape!
+\begin{figure}[h]
+\includegraphics[scale=0.64]{figures/WB.png}
+\caption{Evolution of the average throughput per user for each policy during the test simulation with Web Browsing traffic model.} \label{fig:WB}
+\end{figure}
+As we can see in Fig. \ref{fig:WB}, the static policy shows the better performance in terms of average throughput of the user, the random has poor results with significant fluctuation and finally the Q-learning policy manifests a trend between the previous ones.
+\begin{figure}[h]
+\includegraphics[scale=0.64]{figures/FB.png}
+\caption{Evaluation of UEs' throughput for Full Buffer traffic model.} \label{fig:FB}
+\end{figure}
+Fig. \ref{fig:FB} represents the worst scenario for the Q-policy because its throughput achieved is very low; the static policy proves to be stable over time instead the last one swings around the static policy. 
+\begin{figure}[h]
+\includegraphics[scale=0.64]{figures/VS.png}
+\caption{UEs' throughput profiles for Video Streaming model.} \label{fig:VS}
+\end{figure} 
+After a initial steep slope Q-learning and Static policies stabilize their throughput instead the random policy shows a minimum peak and then stabilizes itself too. However Q-learning performs very poorly in this scenario.
+Analyzing the results it is clear that we did not achieve our purpose and this might be due to several factors. In particular we note an unexpected increasing throughput that could be due to simulator problems. Applying RL, we chose some parameters to summarize all the information needed to the agent to make decisions and it is possible that they are not enough representative of the environment's state not satisfying Markov Property. After that, because of the limited computational power and time that we had, we increased the users' speed in the simulation to make possible some handovers in our data and this can lead to unrealistic simulations. For the same reasons we had to limit the total number of states limiting the number of parameters and also we had to quantize them in just some values. This can have also contributed to our bad results. Other problems could be related to learning phase: Q-learning convergence guarantee holds for an infinite number of visit for each state, a good approximation of Q-values could be obtained with a continuous update of states then 40 simulation of 100 frames each could be a misleading training set. During the training of our algorithm we choose the Web Traffic model since it shapes a more realistic scenario. Taking in account its packet generation randomness seams logically that it does not fit with the Full Buffer scenario as represented in Fig. \ref{fig:FB}. The last factor is the reward and chosen parameters, the former actually seems to us very reasonable but we may be wrong and not catch the learning problem, the latter instead could need a properly parameter selection.
+
+ 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}\label{sec:conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Conclusions are a superbrief summary of what has been done and highlighting of the "take home message"
-\newpage
+In this paper we examined the state of the art of the eICIC and then we tried to put in practice the Q-learning technique. Following the SON philosophy our contribution provides an attempt of exploit machine learning algorithms to auto-tune the network to UEs necessities. Our future work focus on tuning the Q-learning approach considering a different reward function and tuned parameters. In case of successful results with the target of improving performances, the use of Deep Q-Learning could be a good path to follow.
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{biblio}
