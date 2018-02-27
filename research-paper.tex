@@ -80,7 +80,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Self-Organizing Networks	in LTE: a Q-learning approach to ABS optimization}
+\title{Self-Organizing Networks	in LTE: a Q-learning Approach to ABS Optimization}
 
 \author{\IEEEauthorblockN{Andrea Maracani, Marco Rossanese, Davide Talon}
 \IEEEauthorblockA{Department of Information Engineering, University of Padova -- Via Gradenigo, 6/b, 35131 Padova, Italy\\Email: {\tt\{andrea.maracani,marco.rossanese,davide.talon\}@studenti.unipd.it}
@@ -92,7 +92,7 @@
 \begin{abstract}
 In this paper we introduce a possible machine-learning approach for the enhanced inter-cell interference coordination (eICIC) in a heterogeneous network (HetNet), where macro and micro cells optimize their downlink transmission in a self-adaptive manner. The idea is to exploit the Q-learning algorithm to guarantee a fair resource sharing between micro and macro cells and so to make the system works in the best performance possible. Indeed this specific reinforcement learning technique is used to find out the optimal policy that leads to the right ABS pattern setting, designed specifically for each scenario. Hence evaluating only a few parameters and changing dynamically the ABS pattern we aim to cope the possible alterations on a realistic environment. Finally, three different ABS policies are evaluated over many traffic models in term of the average throughput per user.\\
 
-\textit{Index  Terms}---SON, Self Optimizing Networks, LTE, eICIC, ABS, reinforcement learning, Q-learning, MONSTeR     
+\textit{Index  Terms}---SON, Self Optimizing Networks, LTE, eICIC, ABS, Reinforcement Learning, Q-learning, MONSTeR     
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,14 +119,14 @@ Our work is focused on the last point of the list, more precisely on the improve
 The problem we are facing consists in finding the optimal trade-off between assigning the radio resources to high-power nodes (macro) or low-power nodes (micro). The latter has an higher capacity and consequently an user connected to it will have better performances; however, low-power nodes are severely affected by the interference from the high-power nodes, due to fact that they share the same frequency band with the macro. In other words, downlink micro transmissions to its UEs could be sorely degraded by high power macro transmission; besides UEs that are close to a micro could end up associating to a macro due to the higher power strength received from the stronger node.\\
 Accounting the above scenario, the micro could be left underutilized and this would turn out to be a bad exploitation of the resources deployed appositely to enhance the connectivity in some areas, with a following shortage of the user performance in comparison with achievable potential capacity.\\
 Addressing a fair resource sharing, a solution could be stop macros from all the transmissions (some exception signals, like beacons, are always active), for a certain amount of time: this approach is adopted by LTE 3GPP standard and it is known as enhanced Inter Cell Interference Coordination (eICIC). The period in which macros are "silent" is called Almost Blank Subframe (ABS), period over which micros can transmit with reduced interference.\\
-Time is slotted in frames of 10 ms and each one of these is split into 10 subframes, so a macro decides to mute itself in a certain subframe following the ABS mask, that's the pattern of 0's and 1's where 1 indicates the macro's inactivity.\\
+Time is slotted in frames of 10 ms and each one of these is split into 10 subframes, so a macro decides to mute itself in a certain subframe following the ABS mask, that is the pattern of 0's and 1's where 1 indicates the macro's inactivity. The micro instead is always active.\\
 The goal is to discover an adaptive ABS mask that maximizes the UEs' performance and it is found as the result of an optimization problem. Our idea is to use a reinforcement learning (RL) approach, the Q-learning technique, in order to reach the fairness between the shared resources and to set the best ABS mask in a self-tuning manner for each specific scenario.\\
 Thanks to the LTE environment simulator MONSTeR (MObile Networks SimulaToR) \cite{monster}, a framework built around the LTE system toolbox available in MATLAB, we simulate a great amount of data traffic with the purpose of training the Q-learning: after this period the method involved will yield the best policy for setting the considered mask.\\
 \begin{figure}[h]
 \includegraphics[scale=0.80]{figures/ABS.png}
 \caption{Example of a typical HetNet with a macro and some micros used for throughput enhancement in high density utilization area; a micro is placed on the edge of the coverage area for improving throughput of the border UEs. }\label{img:hetnet}
 \end{figure}     
-\noindent Simulations prove that our modeling choice is not the optimal one but could be a good starting point to develop eICIC optimization through Q-Learning, indeed the proposed algorithm performs poorly respect the baseline solutions.\\
+\noindent Simulations prove that our modeling choice is not the optimal one, indeed the proposed algorithm performs poorly respect the baseline solutions, but could be a good starting point to develop eICIC optimization through Q-Learning.\\
 The rest of the paper is organized as follows: Section II
 presents how eICIC is addressed in literature. Section III introduces the adopted system
 model, specifying the necessary theoretical background to explain the steps that leaded us to define it. 
@@ -146,9 +146,9 @@ Another noteworthy paper is surely \cite{simsek2013enhanced}, here the authors t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In this section we will explain all the operative assumptions, with the theoretical motivations, that we took into account for our proposal.
 \subsection{Problem modelization}
-As stated in \cite{sutton1998reinforcement}, the main book about RL: the reinforcement learning problem is meant to be a straightforward framing of the problem of learning from interaction to achieve a goal. The learner, who is the one that makes the decisions is called the agent and in this scenario will be the macro. The thing it interacts with, comprising everything outside the agent, is called the environment, part played here by the simulator MONSTeR. These interact continually, the agent selecting actions and the environment reacting to those actions and presenting new situations to the agent. The environment also yields rewards, numerical values that evaluate the goodness of the last action taken and that the agent tries to maximize over time. Defining $S$ as the set of all possible states and $A_s$ as the available actions at state $s$, the problem is modelled as a finite Markov Decision Process (MDP) defined as a 5-tuple:
+As stated in \cite{sutton1998reinforcement}, the main book about RL: the reinforcement learning problem is meant to be a straightforward framing of the problem of learning from interaction to achieve a goal. The learner, who is the one that makes the decisions is called the agent and in this scenario will be the macro. The thing it interacts with, comprising everything outside the agent, is called the environment, part played here by the simulator MONSTeR. These interact continually, the agent selecting actions and the environment reacting to those actions and presenting new situations to the agent. The environment also yields rewards, numerical values that evaluate the goodness of the last action taken and that the agent tries to maximize over time. Defining $S$ as the set of all possible states and $A_s$ as the available actions at state $s$, the problem is modeled as a finite Markov Decision Process (MDP) defined as a 5-tuple:
 \begin{equation*}
-(S, A_s, P_a(s_t, s_{t+1}), R_a(s_t, s_{t+1}), \gamma)
+(S, A_s, P_a(s_t, s_{t+1}), R_a(s_t, s_{t+1}), \gamma),
 \end{equation*}
 where $P_a(s_t, s_{t+1})$ represents the probability to move from state $s_t$ to state $s_{t+1}$ with action $a \in A_s$, $R_a(s_t, s_{t+1})$ describes the obtained reward from the transaction $s_t$ towards $s_{t+1}$ with action $a_t \in A_s$ and the discount factor $\gamma$ reflects how to weight future actions' reward. Therefore the environment is represented as a Markov chain in which each transaction relies on the agent's action and environment's response. We need a small as possible state space to reduce the complexity of the MDP, but at the same time each state should contains
 enough information to preserve the Markov's property. Hence, at each time step $t$, the agent receives a representation of the environment's state $S_t$, here defined by three parameters:
@@ -157,33 +157,33 @@ enough information to preserve the Markov's property. Hence, at each time step $
 \item the ratio between the throughput of the macro cell and the mean value of the throughtput of all micro cells, quantized in five values;
 \item the number of ABS is quantized in six values where each of them stays for the amount of subframes in which the macro cell stays silent. In particular we just consider ABS masks composed by an even number of silent subframes, that are actually six.
 \end{itemize}
-Then, for the curse of dimensionality, the total number of possible states in our environment is exactly $4\cdot 5\cdot 6=120$ which allow us to handle the convergence problem. Depending in which state the agent is, it selects an action $A_t$ from the set of all actions $A=\lbrace-2,0,2\rbrace$ that will modify the ABS mask by this amount. In the states where the ABS mask is equal to 0 there is not the decreasing-action (-2) and in the states with ABS mask equal to 10 there is not the increasing action (+2). The reward is a number between 0 and 10 and it must be an high value when the ratio between the thoughput per user in the macro cell and the throughput per user in the microcells is close to one. In fact this condition is index of fairness between the downlink transmissions for users in the macro cell and users in the micro cells. In particular the ratio we consider is: 
+Then, for the curse of dimensionality, the total number of possible states in our environment is exactly $4\cdot 5\cdot 6=120$ which allow us to handle the convergence problem. Depending in which state the agent is, it selects an action $A_t$ from the set of all actions $A=\lbrace-2,0,2\rbrace$ that will modify the ABS mask by this amount. In the states where the ABS mask is equal to 0 there is not the decreasing-action (-2) and in the states with ABS mask equal to 10 there is not the increasing action (+2). The reward is a number between 0 and 10 and it must be an high value when the ratio between the thoughput per user in the macro cell and the throughput per user in the microcells is close to one. In fact this condition is index of fairness between the downlink transmissions for users in the macro cell and users in the micro cells. Denoting $n^M$ as the number of users in the macro and $n^m$ as the average number of users connected to the micro at the state $s_{t+1}$, we consider the ratio: 
 \begin{equation*}
-r(n^{m},n^{M},S^{m},S^{M})=\bigg(\frac{ S^{M} / n^{M} }{S^{m} / n^{m}} \bigg)= \bigg(\frac{ S^{M} \cdot n^{m}}{S^{m} \cdot n^{M}} \bigg)
+r(n^{m},n^{M},S^{m},S^{M})=\bigg(\frac{ S^{M} / n^{M} }{S^{m} / n^{m}} \bigg)= \bigg(\frac{ S^{M} \cdot n^{m}}{S^{m} \cdot n^{M}} \bigg).
 \end{equation*}
-And so, the reward function we consider is:
+And so, the reward function:
 \begin{dmath*}
 Reward(n^{m},n^{M},S^{m},S^{M}) = \begin{cases} 10 \cdot r(n^{m},n^{M},S^{m},S^{M}), & \mbox{if } r<1 \\ max( 10 \cdot(2 - r(n^{m},n^{M},S^{m},S^{M}),0), & \mbox{if } r>1 \end{cases}
 \end{dmath*} 
-where $m$ stands for micro and $M$ for macros and it shows the discrepancy between the actual system condition and the equilibrium we're aiming to. \\
+where $S^M$ stands for macro's throughput and $S^m$ for average micro's throughput at the state $s_{t+1}$. The reward shows the discrepancy between the actual system condition and the equilibrium we're aiming to. \\
 At each time step, the agent maps from states to probabilities of taking each possible action. This mapping is called policy and is denoted as $\pi:S \times S \times A \rightarrow R$. Reinforcement
 learning specifies how the agent changes its policy in relation of its experience. The agent's goal is to learn actions that maximize the discounted reward, that is the total amount of reward it gains on the long term:
 \begin{equation*}
-G_t = \sum_{k=0}^{\infty}{\gamma^kR_{t+k+1}}
+G_t = \sum_{k=0}^{\infty}{\gamma^kR_{t+k+1}}.
 \end{equation*}
-Actions cannot follow a greedy selection, a myopic choice could yield the MDP to achieve a sub-optimal solution, that is in a local minimum point.
+So actions cannot follow a greedy selection, a myopic choice could yield the MDP to achieve a sub-optimal solution, that is it could be a local minimum point.
 
 \subsection{Q-learning technique}
-Q-learning algorithm was proposed by Watkins in \cite{watkins1992q} and consists in maintaining a table of estimated expected long-run reward, called indeed Q-values and written as $Q(S,A)$, for each state-action couple. This technique is classified between the off-policy methods, in other words it evaluates or improves a policy different from that used to generate the data, as explained by \cite{sutton1998reinforcement}. So the idea to exploit two policies, one that is learned about and that becomes the optimal policy (target policy), and an exploratory one used to estimate the Q-values (exploration policy). Despite that the most used policies to implement the latter are the $\epsilon$-greedy or the softmax, we decided to use a totally random selection policy. \\
+Q-learning algorithm was proposed by Watkins in \cite{watkins1992q} and consists in maintaining a table of estimated expected long-run reward, called indeed Q-values and written as $Q(S,A)$, for each state-action pair. This technique is classified as an off-policy methods, in other words it evaluates or improves a policy different from that used to generate the data, as explained by \cite{sutton1998reinforcement}. So the idea to exploit two policies, one that is learned about and that becomes the optimal policy (target policy), and an exploratory one used to estimate the Q-values (exploration policy). Despite that the most used policies to implement the latter are the $\epsilon$-greedy or the softmax, we decided to use a totally random selection policy. \\
 After Q-values have been enough discovered, the Q-learning function points out how to update the Q-value at each step and it's described as follows:
 \begin{equation*}
-Q(S_{t+1},A_{t+1})=Q(S_{t},A_{t})+\alpha[R(S_{t},A_{t})-Q(S_{t},A_{t})]
+Q(S_{t+1},A_{t+1})=Q(S_{t},A_{t})+\alpha[R(S_{t},A_{t})-Q(S_{t},A_{t})],
 \end{equation*}
-where $ R  $ is the maximized expected reward and $\alpha$, indicates with which rates we take actions towards the best Q-values achievable.
+where $ R  $ is the maximized expected reward and $\alpha$, the learning rate, indicates with which rates we take actions towards the best Q-values achievable.
 \section{Simulation Settings}
-In the present work in order to evaluate the proposed algorithm we run out an extensive MATLAB simulation using MONSTeR. We generated an urban scenario of 4000 squared meters with 4 horizontal and 3 vertical streets and among them we located buildings with height uniformly distributed from 20 to 50 meters. Then only macro eNodeB is placed at the center of the city and 4 micros are equally distributed on a circumference centered in the macro with radius of 40 m; the former has height 35 m and 50 Resource Blocks (RB) and the latter have height 25 m and 25 RBs. The mobility of the users is generated randomly, 15 users move with velocity 70 m/s\footnote{This high speed is imposed by the need of computing a sufficiently number of handovers in a frame.} along sidewalks and at each cross have the same probability to turn left/right or to go straight ahead.\\
+In the present work in order to evaluate the proposed algorithm we run out an extensive MATLAB simulation using MONSTeR. We generated an urban scenario of 4000 squared meters with 4 horizontal and 3 vertical streets and among them we located buildings with height uniformly distributed from 20 to 50 meters. Then only macro eNodeB is placed at the center of the city and 4 micros are equally distributed on a circumference centered in the macro with radius of 40 m; the former has height 35 m and 50 Resource Blocks (RB) and the latter have height 25 m and 25 RBs. The mobility of the users is generated randomly, 15 users move with velocity 70 m/s \footnote{This high speed is imposed by the need of computing a sufficiently number of handovers in a frame.} along sidewalks and at each cross have the same probability to turn left/right or to go straight ahead.\\
 To simulate the channel and the wireless communication we considered the Winner II channel model \cite{bultitude20074} with urban propagation scenario implemented inside MATLAB Communications System Toolbox.
-To assess the worth of our algorithm we considered as main metrics the Bit Error Rate (BER) and the average throughput of involved users, therefore we selected as benchmark two ABS choice policy from the literature in three different traffic scenarios:
+To assess the worth of our algorithm we considered as metric the average throughput of involved users, therefore we selected as benchmark two ABS choice policy from the literature in three different traffic scenarios:
 \begin{itemize}
 	\item \textbf{Static ABS}: the number of Almost Blank Subframes remains constant to 4 over the entire simulation and  cells use the same ABS mask 
     [0,1,0,1,0,1,0,1,0,0];
@@ -201,7 +201,7 @@ Table \ref{table:a} sums up the ABS policy parameters.
 		\begin{tabular}{lcc} 
 			\hline
 			\multicolumn{1}{l|}{\scshape ABS policy} & \multicolumn{1}{c}{\scshape Parameter}   & \scshape Value    \\ \hline
-			\multicolumn{1}{l|}{Random policy}       & \multicolumn{1}{c|}{$Prob[a_{incr}]$} 	& $1/3$                       \\ 
+			\multicolumn{1}{l|}{Random}       & \multicolumn{1}{c|}{$Prob[a_{incr}]$} 	& $1/3$                       \\ 
 			\multicolumn{1}{l|}{}                    & \multicolumn{1}{c|}{$Prob[a_{cost}]$} 	& $1/3$      \\
 			\multicolumn{1}{l|}{}                    & \multicolumn{1}{c|}{$Prob[a_{decr}]$} 	& $1/3$       \\ \hline
 			\multicolumn{1}{l|}{Static}				 & \multicolumn{1}{c|}{$N_{ABS}$} 	 		& 4		     \\  \hline    
@@ -213,12 +213,12 @@ Table \ref{table:a} sums up the ABS policy parameters.
 \end{footnotesize}
 \egroup
 
-\noindent We compared the system over three different traffic models. In the simple web browsing model, we are simulating a realistic human behavior during a web surfing period: packet request events from an user is modelled as a Poisson process of rate $\lambda$, which is taken from a Gaussian distribution $\lambda\sim\mathcal{N}(75, 10)$. So whenever a generation event occurs a packet file is created with a random dimension. Specifically the packet size could be $\lbrace$10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000$\rbrace$ with a probability inversely proportional to the size itself, i.e. the smallest packet will benefit of an higher likelihood.\\
-In the full buffer model we imposed that at each moment a packet is available to be transmitted with a size of 10 Mb, therefore the system is saturated from users' requests.\\
-The last one considered, the video steaming model generates a video steaming session from real traces of the video \textit{Big Buck Bunny}.
+\noindent We compared the system over three different traffic models. In the simple Web Browsing model, we are simulating a realistic human behavior during a web surfing period: packet request events from an user is modeled as a Poisson process of rate $\lambda$, which is taken from a Gaussian distribution $\lambda\sim\mathcal{N}(75, 10)$. So whenever a generation event occurs, a packet file is created with a random dimension. Specifically the packet size could be $\lbrace$10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000$\rbrace$ with a probability inversely proportional to the size itself, i.e. the smallest packet will benefit of an higher likelihood.\\
+In the Full Buffer model we imposed that at each moment a packet is available to be transmitted with a size of 10 Mb, therefore the system is saturated from users' requests.\\
+The last one considered, the Video Steaming model generates a video steaming session from real traces of the video \textit{Big Buck Bunny}.
 \subsection{Training Phase}
-The learning algorithm was trained over 74 different simulations composed of 125 frames of 10 ms for a total of 9250 frames and simulated time 9.25 seconds. Traffic is generated using web browsing model and random ABS policy.
-Exploiting the off-policy property of the Q-learning algorithm, we ensure that most of all the possible states were visited several times and in such a way the values for the pair state-action could be well approximate.
+The learning algorithm was trained over 40 different simulations composed of 100 frames of 10 ms for a total of 4000 frames and simulated time of 40 seconds. Traffic is generated using Web Browsing model and random ABS policy.
+The target policy is learned exploiting the off-policy property of the Q-learning algorithm.
 \subsection{Test Phase}
 The final test has been carried out in the same scenario, that is a simulation of 100 frames, where the users follow the same paths as depicted in figure \ref{img:map}; we compared the learned Q-policy with the benchmark ABS policies using all the possible traffic models.
 \begin{figure}[h]
@@ -243,15 +243,15 @@ Fig. \ref{fig:FB} represents the worst scenario for the Q-policy because its thr
 \includegraphics[scale=0.64]{figures/VS.png}
 \caption{UEs' throughput profiles for Video Streaming model.} \label{fig:VS}
 \end{figure} 
-After a initial steep slope Q-learning and Static policies stabilize their throughput instead the random policy shows a minimum peak and then stabilizes itself too. However Q-learning performs very poorly in this scenario.
-Analyzing the results it is clear that we did not achieve our purpose and this might be due to several factors. In particular we note an unexpected increasing throughput that could be due to simulator problems. Applying RL, we chose some parameters to summarize all the information needed to the agent to make decisions and it is possible that they are not enough representative of the environment's state not satisfying Markov Property. After that, because of the limited computational power and time that we had, we increased the users' speed in the simulation to make possible some handovers in our data and this can lead to unrealistic simulations. For the same reasons we had to limit the total number of states limiting the number of parameters and also we had to quantize them in just some values. This can have also contributed to our bad results. Other problems could be related to learning phase: Q-learning convergence guarantee holds for an infinite number of visit for each state, a good approximation of Q-values could be obtained with a continuous update of states then 40 simulation of 100 frames each could be a misleading training set. During the training of our algorithm we choose the Web Traffic model since it shapes a more realistic scenario. Taking in account its packet generation randomness seams logically that it does not fit with the Full Buffer scenario as represented in Fig. \ref{fig:FB}. The last factor is the reward and chosen parameters, the former actually seems to us very reasonable but we may be wrong and not catch the learning problem, the latter instead could need a properly parameter selection.
+After a initial steep slope, Q-learning and Static policies stabilize their throughput, instead the random policy shows a minimum peak and then stabilizes itself too. However Q-learning performs very poorly in this scenario.
+Analyzing the results it is clear that we did not achieve our purpose and this might be due to several factors. In particular we note an unexpected increasing throughput that could be due to simulator problems. Applying RL, we chose some parameters to summarize all the information needed to the agent to make decisions and it is possible that they are not enough representative of the environment's state. After that, because of the limited computational power and time that we had, we increased the users' speed in the simulation to make possible some handovers in our data and this can lead to unrealistic simulations. For the same reasons we had to reduce the total number of states limiting the number of parameters and also we had to quantize them in just some values. This can have also contributed to our bad results. Other problems could be related to learning phase: Q-learning convergence guarantee holds for an infinite number of visit for each state, a good approximation of Q-values could be obtained with a continuous update of states and therefore 40 simulation of 100 frames each could be a misleading training set. During the training of our algorithm we chose the Web Traffic model since it shapes a more realistic scenario. Taking into account its randomn packet generation seems logical that it does not fit with the Full Buffer scenario as represented in Fig. \ref{fig:FB}. The last factors are the reward and the chosen parameters, the former actually appears to us very reasonable but we may be wrong and we do not catch the learning problem; the latter instead could need a properly parameter selection.
 
  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}\label{sec:conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In this paper we examined the state of the art of the eICIC and then we tried to put in practice the Q-learning technique. Following the SON philosophy our contribution provides an attempt of exploit machine learning algorithms to auto-tune the network to UEs necessities. Our future work focus on tuning the Q-learning approach considering a different reward function and tuned parameters. In case of successful results with the target of improving performances, the use of Deep Q-Learning could be a good path to follow.
+In this paper we examined the state of the art of the eICIC and then we tried to put in practice the Q-learning technique. Following the SON's philosophy our contribution provides an attempt of exploit machine learning algorithms to auto-setting the network to UEs' necessities. Our future work focus on tuning the Q-learning approach considering a different reward function and accurate parameters. In case of successful results, with the target of improving performances, the use of Deep Q-Learning could be a good path to follow.
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{biblio}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  27 FEB 2018 22:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.6)  28 FEB 2018 00:26
 entering extended mode
 **./research-paper.tex
 (research-paper.tex
@@ -1780,10 +1780,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 Underfull \vbox (badness 1360) has occurred while \output is active []
 
- [4 <./figures/traj.png> <./figures/WB.png (PNG copy)>] (research-paper.bbl
-Underfull \vbox (badness 2856) has occurred while \output is active []
-
-)
+ [4 <./figures/traj.png> <./figures/WB.png (PNG copy)>] (research-paper.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1800,7 +1797,7 @@ Before submitting the final camera ready copy, remember to:
 Here is how much of TeX's memory you used:
  38174 strings out of 493312
  894761 string characters out of 3138900
- 1085573 words of memory out of 3000000
+ 1085571 words of memory out of 3000000
  41092 multiletter control sequences out of 15000+200000
  647050 words of font info for 139 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1821,7 +1818,7 @@ fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
 /times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on research-paper.pdf (5 pages, 381982 bytes).
+Output written on research-paper.pdf (5 pages, 381952 bytes).
 PDF statistics:
  98 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
